@@ -54,4 +54,14 @@ public class FolderGen
         }
 
     }
+
+
+    //going for the builder pattern
+    public static class FolderBuilder{
+        private String location;
+        private int numberOfFiles;
+        private int startpoint;
+        private String folderName;
+        private char folderSeperator;
+    }
 }
