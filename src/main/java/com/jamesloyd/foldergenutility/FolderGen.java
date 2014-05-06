@@ -29,6 +29,8 @@ public class FolderGen
     private int numberOfFiles;
     private int startpoint;
     private String folderName;
+    private char folderSeperator;
+    /*
     public FolderGen(String location, int numberOfFiles, int startpoint, String folderName)
     {
         this.location = location;
@@ -37,6 +39,17 @@ public class FolderGen
         this.folderName = folderName;
 
     }
+    */
+
+    private FolderGen(FolderBuilder builder)
+    {
+        this.folderName = builder.folderName;
+        this.numberOfFiles = builder.numberOfFiles;
+        this.startpoint = builder.startpoint;
+        this.location = builder.location;
+        this.folderSeperator = builder.folderSeperator;
+    }
+
     public void generateFolders()
     {
         for (int i = startpoint; i <numberOfFiles;i++)
@@ -63,5 +76,33 @@ public class FolderGen
         private int startpoint;
         private String folderName;
         private char folderSeperator;
+
+        public FolderBuilder(String location, String folderName)
+        {
+            this.location = location;
+            this.folderName = folderName;
+        }
+
+        public FolderBuilder numberOfFiles(int numberOfFiles)
+        {
+            this.numberOfFiles = numberOfFiles;
+            return this;
+        }
+
+        public FolderBuilder startpoint(int startpoint)
+        {
+            this.startpoint = startpoint;
+            return this;
+        }
+        public FolderBuilder folderSeperator(char folderSeperator)
+        {
+            this.folderSeperator = folderSeperator;
+            return this;
+        }
+
+        public FolderGen build()
+        {
+            return new FolderGen(this);
+        }
     }
 }
