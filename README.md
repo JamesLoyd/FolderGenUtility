@@ -17,3 +17,6 @@ To-Do
 License
 ===
 This program is licensed under the MIT license. You can read the full license [here](https://raw.githubusercontent.com/carharttjimmy/FolderGenUtility/master/LICENSE).
+
+Build Status
+===
