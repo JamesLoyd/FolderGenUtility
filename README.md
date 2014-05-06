@@ -20,3 +20,4 @@ This program is licensed under the MIT license. You can read the full license [h
 
 Build Status
 ===
+[![Build Status](https://travis-ci.org/carharttjimmy/FolderGenUtility.svg?branch=master)](https://travis-ci.org/carharttjimmy/FolderGenUtility)
