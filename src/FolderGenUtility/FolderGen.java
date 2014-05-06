@@ -1,4 +1,4 @@
-package FolderGenerator;
+package FolderGenUtility;
 
 import java.io.File;
 
