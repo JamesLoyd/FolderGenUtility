@@ -1,4 +1,0 @@
-default:
-	gradle build
-
-.PHONY: default
