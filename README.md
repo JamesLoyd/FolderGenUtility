@@ -24,4 +24,4 @@ Build Status
 
 Other Stuff
 ===
-Currently this is being developed to be ran on java8.
+Currently this is being developed to be ran on java8.Though there will be a version with an embedded jre.
