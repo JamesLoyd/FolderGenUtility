@@ -26,8 +26,8 @@ import java.io.File;
 public class FolderGen
 {
     private String location;
-    private int numberOfFiles;
-    private int startpoint;
+    private String numberOfFiles;
+    private String startpoint;
     private String folderName;
     private char folderSeperator;
     /*
@@ -52,6 +52,14 @@ public class FolderGen
 
     public void generateFolders()
     {
+        Integer integer = null;
+        integer= Integer.valueOf(numberOfFiles);
+        if(integer == null)
+        {
+            System.out.println("Why no files?");
+        }
+
+       /*
         for (int i = startpoint; i <numberOfFiles;i++)
         {
             File f = new File(location+"\\"+folderName+i);
@@ -65,15 +73,14 @@ public class FolderGen
                 e.printStackTrace();
             }
         }
-
+*/
     }
-
 
     //going for the builder pattern
     public static class FolderBuilder{
         private String location;
-        private int numberOfFiles;
-        private int startpoint;
+        private String numberOfFiles;
+        private String startpoint;
         private String folderName;
         private char folderSeperator;
 
@@ -83,13 +90,13 @@ public class FolderGen
             this.folderName = folderName;
         }
 
-        public FolderBuilder numberOfFiles(int numberOfFiles)
+        public FolderBuilder numberOfFiles(String numberOfFiles)
         {
             this.numberOfFiles = numberOfFiles;
             return this;
         }
 
-        public FolderBuilder startpoint(int startpoint)
+        public FolderBuilder startpoint(String startpoint)
         {
             this.startpoint = startpoint;
             return this;
