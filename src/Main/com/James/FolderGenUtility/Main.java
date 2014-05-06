@@ -1,4 +1,4 @@
-package FolderGenUtility;
+package Main.com.James.FolderGenUtility;
 import java.util.Scanner;
 
 /**
