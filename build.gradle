@@ -1,0 +1,11 @@
+apply plugin: 'java'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.James.FolderGenUtility.Main'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
