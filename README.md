@@ -11,7 +11,7 @@ To-Do
 * ~~Post code to GITHUB. Right now its in a Gist.~~
 * ~Gradle Build Script~
 * Add travis config for build service.
-*This is waiting on a sucessful build.
+  * This is waiting on a sucessful build.
 
 
 License
