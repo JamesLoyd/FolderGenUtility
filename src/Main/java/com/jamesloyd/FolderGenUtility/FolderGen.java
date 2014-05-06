@@ -1,8 +1,9 @@
-package Main.com.James.FolderGenUtility;
-import java.util.Scanner;
+package com.jamesloyd.foldergenutility;
 
-/**
- *   Copyright (c) 2014 James Loyd
+import java.io.File;
+
+/*
+ *   Copyright (c) 2014 jamesloyd Loyd
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -22,27 +23,35 @@ import java.util.Scanner;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-public class Main
+public class FolderGen
 {
-    //this will get refactored soon
-    public static void main(String args[])
+    private String location;
+    private int numberOfFiles;
+    private int startpoint;
+    private String folderName;
+    public FolderGen(String location, int numberOfFiles, int startpoint, String folderName)
     {
-        int option =0;
-        Scanner scanner = new Scanner(System.in);
-        String location;
-        String folderName;
-        int startpoint;
-        int numberOfFolders;
-        System.out.println("This is a simple program to generate folders in a specified location.");
-        System.out.println("Please input the folder location of the root directory");
-        location = scanner.next();
-        System.out.println("Please input the number of files to be added");
-        numberOfFolders = scanner.nextInt();
-        System.out.println("Please input the starting point.");
-        startpoint = scanner.nextInt();
-        System.out.println("Please input the folderName");
-        folderName = scanner.next();
-        FolderGen folderGen = new FolderGen(location, numberOfFolders, startpoint, folderName);
-        folderGen.generateFolders();
+        this.location = location;
+        this.numberOfFiles = numberOfFiles;
+        this.startpoint = startpoint;
+        this.folderName = folderName;
+
+    }
+    public void generateFolders()
+    {
+        for (int i = startpoint; i <numberOfFiles;i++)
+        {
+            File f = new File(location+"\\"+folderName+i);
+            try{
+                if(f.mkdir()) {
+                    System.out.println("Directory Created");
+                } else {
+                    System.out.println("Directory is not created");
+                }
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+
     }
 }
