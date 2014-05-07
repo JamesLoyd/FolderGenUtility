@@ -1,6 +1,5 @@
 package com.jamesloyd.foldergenutility;
 import java.util.Scanner;
-
 /**
  *   Copyright (c) 2014 James Loyd
  *

@@ -1,5 +1,4 @@
 package com.jamesloyd.foldergenutility;
-
 import java.io.File;
 import java.util.ArrayList;
 
