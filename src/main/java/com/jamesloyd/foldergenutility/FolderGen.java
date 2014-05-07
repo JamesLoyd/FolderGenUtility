@@ -52,9 +52,7 @@ public class FolderGen
 
     public void generateFolders()
     {
-        Integer integer = null;
-        integer= Integer.valueOf(numberOfFiles);
-        if(integer == null)
+        if(numberOfFiles == null)
         {
             System.out.println("Why no files?");
         }
