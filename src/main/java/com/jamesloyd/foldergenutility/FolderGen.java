@@ -32,7 +32,7 @@ public class FolderGen
     private String folderName;
     private char folderSeperator;
 
-    private FolderGen(FolderGenBuilder builder)
+    private FolderGen(folderGenBuilder builder)
     {
         this.folderName = builder.folderName;
         this.numberOfFiles = builder.numberOfFiles;
