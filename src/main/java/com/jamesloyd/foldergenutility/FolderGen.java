@@ -32,7 +32,7 @@ public class FolderGen
     private String folderName;
     private char folderSeperator;
 
-    private FolderGen(folderGenBuilder builder)
+    private FolderGen(FolderGenBuilder builder)
     {
         this.folderName = builder.folderName;
         this.numberOfFiles = builder.numberOfFiles;
@@ -130,24 +130,24 @@ public class FolderGen
         private String folderName;
         private char folderSeperator;
 
-        public folderGenBuilder(String location, String folderName)
+        public FolderGenBuilder(String location, String folderName)
         {
             this.location = location;
             this.folderName = folderName;
         }
 
-        public folderGenBuilder numberOfFiles(String numberOfFiles)
+        public FolderGenBuilder numberOfFiles(String numberOfFiles)
         {
             this.numberOfFiles = numberOfFiles;
             return this;
         }
 
-        public folderGenBuilder startpoint(String startpoint)
+        public FolderGenBuilder startpoint(String startpoint)
         {
             this.startpoint = startpoint;
             return this;
         }
-        public folderGenBuilder folderSeperator(char folderSeperator)
+        public FolderGenBuilder folderSeperator(char folderSeperator)
         {
             this.folderSeperator = folderSeperator;
             return this;
