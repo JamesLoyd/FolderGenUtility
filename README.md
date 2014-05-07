@@ -20,4 +20,4 @@ Build Status
 
 Other Stuff
 ===
-Currently this is being developed to be ran on java8.Though there will be a version with an embedded jre. The embedded jre will allow for the application to be run while java is not installed on the machine.
+Currently this is being developed to be run on java8.Though there will be a version with an embedded jre. The embedded jre will allow for the application to be run while java is not installed on the machine.
