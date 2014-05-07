@@ -119,10 +119,15 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         if(e.getSource() == submitButton)
         {
-            FolderGen.FolderGenBuilder folderGenBuilder = new FolderGen.FolderGenBuilder(textFieldLocation.getText(), textForFolderName.getText());
-            FolderGen folderGen = folderGenBuilder.build();
-            System.out.println(folderGen.toString());
-            folderGen.generateFolders();
+            if (checkboxForNumber.isSelected())
+            {
+
+            }
+            else
+            {
+               FolderGen folderGen = FolderGen.getFolderWithLocationAndNameOnly(textFieldLocation.getText(),textForFolderName.getText());
+               folderGen.generateFolders();
+            }
         }
     }
 
