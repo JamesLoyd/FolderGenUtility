@@ -44,6 +44,6 @@ public class Main
         folderName = scanner.next();
         FolderGen.FolderBuilder folderBuilder = new FolderGen.FolderBuilder(location,folderName);
         FolderGen folderGen = folderBuilder.build();
-        folderGen.generateFolderNames();
+        folderGen.generateFolders();
     }
 }
