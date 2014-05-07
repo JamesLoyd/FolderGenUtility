@@ -153,7 +153,7 @@ public class FolderGen
             return this;
         }
 
-        public folderGen build()
+        public FolderGen build()
         {
             return new FolderGen(this);
         }
