@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
 
 /**
  *   Copyright (c) 2014 James Loyd
@@ -35,9 +36,12 @@ public class Form extends JFrame implements ActionListener , ItemListener
     private JCheckBox checkboxForNumber;
     private JButton submitButton;
     private JLabel labelForFolderLocation;
+    private JLabel labelForMultipleFoldersName;
+    private JTextField textForFolderName;
+    private JLabel labelForFolderName;
     private JLabel labelForMultipleFoldersIncrement;
 
-    JFrame jFrame = new JFrame("Folder Generation Utility | FolderGenUtility");
+    JFrame jFrame = new JFrame("FolderGenUtility");
 
     public Form()
     {
@@ -47,6 +51,9 @@ public class Form extends JFrame implements ActionListener , ItemListener
         this.submitButton = new JButton();
         this.labelForFolderLocation = new JLabel();
         this.labelForMultipleFoldersIncrement = new JLabel();
+        this.textForFolderName = new JTextField();
+        this.labelForFolderName = new JLabel();
+        this.labelForMultipleFoldersName = new JLabel();
 
     }
 
@@ -55,9 +62,12 @@ public class Form extends JFrame implements ActionListener , ItemListener
         pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
         addALabel("<html><p>Please insert a folder location</p></html>", pane, true, labelForFolderLocation);
         addATextBox(pane, true, textFieldLocation);
-        addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
-        addACheckBox(pane, checkboxForNumber);
-        addATextBox(pane, false,textFieldNumberOfFolders);
+        //addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
+        //addACheckBox(pane, checkboxForNumber);
+        //addALabel("<html><p>Please insert the stuff</p></html>",pane,false,labelForMultipleFoldersName);
+        //addATextBox(pane, false,textFieldNumberOfFolders);
+        addALabel("<html><p>Please insert the folder name</p></html>",pane,true,labelForFolderName);
+        addATextBox(pane,true,textForFolderName);
         addAbutton("Submit Button", pane, submitButton);
 
     }
@@ -109,17 +119,23 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         if(e.getSource() == submitButton)
         {
-            System.out.println("Yo");
+            FolderGen.FolderGenBuilder folderGenBuilder = new FolderGen.FolderGenBuilder(textFieldLocation.getText(), textForFolderName.getText());
+            FolderGen folderGen = folderGenBuilder.build();
+            System.out.println(folderGen.toString());
+            folderGen.generateFolders();
         }
     }
+
 
     @Override
     public void itemStateChanged(ItemEvent e)
     {
+        /*
         if(e.getStateChange() == ItemEvent.SELECTED)
         {
             jFrame.setSize(200,400);
             textFieldNumberOfFolders.setVisible(true);
+            labelForMultipleFoldersName.setVisible(true);
             jFrame.invalidate();
             jFrame.validate();
 
@@ -128,11 +144,12 @@ public class Form extends JFrame implements ActionListener , ItemListener
         else
         {
             textFieldNumberOfFolders.setVisible(false);
+            labelForMultipleFoldersName.setVisible(false);
             jFrame.setSize(200,300);
             jFrame.invalidate();
             jFrame.validate();
         }
-
+    */
 
     }
 }

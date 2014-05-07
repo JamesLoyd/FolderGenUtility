@@ -40,7 +40,7 @@ public class FolderGen
         this.folderSeperator = builder.folderSeperator;
     }
 
-    public void generateFolders() throws Exception
+    public void generateFolders()
     {
         StringBuffer buffer = new StringBuffer();
         buffer.append(location);
@@ -103,7 +103,7 @@ public class FolderGen
         generate(fileList);
     }
 
-    private void generate(ArrayList<File> fileList) throws Exception
+    private void generate(ArrayList<File> fileList)
     {
         for (int i = 0; i < fileList.size() ; i++)
         {
@@ -119,6 +119,15 @@ public class FolderGen
                 e.printStackTrace();
             }
         }
+    }
+
+    public String toString()
+    {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(location);
+        buffer.append("\\");
+        buffer.append(folderName);
+        return buffer.toString();
     }
 
     //going for the builder pattern
