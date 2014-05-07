@@ -30,16 +30,6 @@ public class FolderGen
     private String startpoint;
     private String folderName;
     private char folderSeperator;
-    /*
-    public FolderGen(String location, int numberOfFiles, int startpoint, String folderName)
-    {
-        this.location = location;
-        this.numberOfFiles = numberOfFiles;
-        this.startpoint = startpoint;
-        this.folderName = folderName;
-
-    }
-    */
 
     private FolderGen(FolderBuilder builder)
     {
@@ -50,28 +40,72 @@ public class FolderGen
         this.folderSeperator = builder.folderSeperator;
     }
 
-    public void generateFolders()
+    public void generateFolders() throws Exception
     {
-        if(numberOfFiles == null)
+        if(numberOfFiles == null && startpoint == null)
         {
-            System.out.println("Why no files?");
+           StringBuffer buffer = new StringBuffer();
+            buffer.append(location);
+            buffer.append("\\");
+            buffer.append(folderName);
+            File file = new File(buffer.toString());
         }
 
-       /*
-        for (int i = startpoint; i <numberOfFiles;i++)
+        else if (numberOfFiles !=null && startpoint == null)
         {
-            File f = new File(location+"\\"+folderName+i);
-            try{
-                if(f.mkdir()) {
-                    System.out.println("Directory Created");
-                } else {
-                    System.out.println("Directory is not created");
-                }
-            } catch(Exception e){
-                e.printStackTrace();
+            //assume 1 is default number
+            for (int i = 0; i < Integer.parseInt(numberOfFiles) ; i++)
+            {
+                StringBuffer buffer = new StringBuffer();
+                buffer.append(location);
+                buffer.append("\\");
+                buffer.append(folderName);
+                buffer.append(i);
+                File file = new File(buffer.toString());
             }
         }
-*/
+
+        else if (numberOfFiles != null && startpoint == null && Character.isDefined(folderSeperator))
+        {
+            for (int i = 0; i < Integer.parseInt(numberOfFiles) ; i++)
+            {
+                StringBuffer buffer = new StringBuffer();
+                buffer.append(location);
+                buffer.append("\\");
+                buffer.append(folderName);
+                buffer.append(folderSeperator);
+                buffer.append(i);
+            }
+
+
+        }
+
+        else if (numberOfFiles !=null && startpoint !=null && Character.isDefined(folderSeperator))
+        {
+            for (int i = Integer.parseInt(startpoint); i < Integer.parseInt(numberOfFiles) ; i++)
+            {
+                StringBuffer buffer = new StringBuffer();
+                buffer.append(location);
+                buffer.append("\\");
+                buffer.append(folderName);
+                buffer.append(folderSeperator);
+                buffer.append(i);
+            }
+        }
+
+        else
+        {
+            for (int i = Integer.parseInt(startpoint);  i < Integer.parseInt(numberOfFiles) ;  i++)
+            {
+                    StringBuffer buffer = new StringBuffer();
+                    buffer.append(location);
+                    buffer.append("\\");
+                    buffer.append(folderName);
+                    buffer.append(folderSeperator);
+                    buffer.append(i);
+
+            }
+        }
     }
 
     //going for the builder pattern

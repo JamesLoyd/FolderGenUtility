@@ -25,7 +25,7 @@ import java.util.Scanner;
 public class Main
 {
     //this will get refactored soon
-    public static void main(String args[])
+    public static void main(String args[]) throws Exception
     {
         int option =0;
         Scanner scanner = new Scanner(System.in);
@@ -42,7 +42,7 @@ public class Main
         startpoint = scanner.nextInt();
         System.out.println("Please input the folderName");
         folderName = scanner.next();
-        FolderGen.FolderBuilder folderBuilder = new FolderGen.FolderBuilder(location,folderName).startpoint("1");
+        FolderGen.FolderBuilder folderBuilder = new FolderGen.FolderBuilder(location,folderName);
         FolderGen folderGen = folderBuilder.build();
         folderGen.generateFolders();
     }
