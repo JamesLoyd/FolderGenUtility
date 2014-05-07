@@ -40,11 +40,13 @@ public class Form extends JFrame implements ActionListener , ItemListener
     private JTextField textForFolderName;
     private JLabel labelForFolderName;
     private JLabel labelForMultipleFoldersIncrement;
+    private JToolBar toolBar;
 
     JFrame jFrame = new JFrame("FolderGenUtility");
 
     public Form()
     {
+        this.toolBar = new JToolBar();
         this.textFieldLocation = new JTextField();
         this.textFieldNumberOfFolders = new JTextField();
         this.checkboxForNumber = new JCheckBox();
@@ -59,7 +61,9 @@ public class Form extends JFrame implements ActionListener , ItemListener
 
     public  void addComponentsToPane(Container pane)
     {
+
         pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
+        addAToolbar("yo",pane,toolBar);
         addALabel("<html><p>Please insert a folder location</p></html>", pane, true, labelForFolderLocation);
         addATextBox(pane, true, textFieldLocation);
         //addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
@@ -72,6 +76,16 @@ public class Form extends JFrame implements ActionListener , ItemListener
 
     }
 
+    private void addAToolbar(String text, Container container, JToolBar toolBar)
+    {
+        JButton button = new JButton();
+        toolBar.setAlignmentX(Component.CENTER_ALIGNMENT);
+        toolBar.setToolTipText("yoyo");
+        toolBar.setMaximumSize(new Dimension(259, 30));
+        toolBar.add(button);
+        toolBar.setFloatable(false);
+        container.add(toolBar);
+    }
     private  void addAbutton(String text, Container container, JButton button)
     {
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -111,7 +125,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(jFrame.getContentPane());
         jFrame.pack();
-        jFrame.setSize(260,140);
+        jFrame.setSize(260,150);
         jFrame.setVisible(true);
     }
 
