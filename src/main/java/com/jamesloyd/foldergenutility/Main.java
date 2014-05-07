@@ -42,7 +42,7 @@ public class Main
         startpoint = scanner.nextInt();
         System.out.println("Please input the folderName");
         folderName = scanner.next();
-        FolderGen.FolderBuilder folderBuilder = new FolderGen.FolderBuilder(location,folderName);
+        FolderGen.folderGenBuilder folderBuilder = new FolderGen.folderGenBuilder(location,folderName);
         FolderGen folderGen = folderBuilder.build();
         folderGen.generateFolders();
     }
