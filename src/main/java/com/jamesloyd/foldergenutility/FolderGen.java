@@ -104,7 +104,7 @@ public class FolderGen
         generate(fileList);
     }
 
-    private void generate(ArrayList<File> fileList)
+    private void generate(ArrayList<File> fileList) throws Exception
     {
         for (int i = 0; i < fileList.size() ; i++)
         {
