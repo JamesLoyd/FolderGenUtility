@@ -1,6 +1,7 @@
 package com.jamesloyd.foldergenutility;
 
 import java.io.File;
+import java.util.ArrayList;
 
 /*
  *   Copyright (c) 2014 James Loyd
@@ -42,13 +43,15 @@ public class FolderGen
 
     public void generateFolders() throws Exception
     {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(location);
+        buffer.append("\\");
+        buffer.append(folderName);
+        ArrayList<File> fileList = new ArrayList<>();
         if(numberOfFiles == null && startpoint == null)
         {
-           StringBuffer buffer = new StringBuffer();
-            buffer.append(location);
-            buffer.append("\\");
-            buffer.append(folderName);
             File file = new File(buffer.toString());
+            fileList.add(file);
         }
 
         else if (numberOfFiles !=null && startpoint == null)
@@ -56,12 +59,9 @@ public class FolderGen
             //assume 1 is default number
             for (int i = 0; i < Integer.parseInt(numberOfFiles) ; i++)
             {
-                StringBuffer buffer = new StringBuffer();
-                buffer.append(location);
-                buffer.append("\\");
-                buffer.append(folderName);
                 buffer.append(i);
                 File file = new File(buffer.toString());
+                fileList.add(file);
             }
         }
 
@@ -69,12 +69,10 @@ public class FolderGen
         {
             for (int i = 0; i < Integer.parseInt(numberOfFiles) ; i++)
             {
-                StringBuffer buffer = new StringBuffer();
-                buffer.append(location);
-                buffer.append("\\");
-                buffer.append(folderName);
                 buffer.append(folderSeperator);
                 buffer.append(i);
+                File file = new File((buffer.toString()));
+                fileList.add(file);
             }
 
 
@@ -84,12 +82,10 @@ public class FolderGen
         {
             for (int i = Integer.parseInt(startpoint); i < Integer.parseInt(numberOfFiles) ; i++)
             {
-                StringBuffer buffer = new StringBuffer();
-                buffer.append(location);
-                buffer.append("\\");
-                buffer.append(folderName);
                 buffer.append(folderSeperator);
                 buffer.append(i);
+                File file = new File((buffer.toString()));
+                fileList.add(file);
             }
         }
 
@@ -97,13 +93,26 @@ public class FolderGen
         {
             for (int i = Integer.parseInt(startpoint);  i < Integer.parseInt(numberOfFiles) ;  i++)
             {
-                    StringBuffer buffer = new StringBuffer();
-                    buffer.append(location);
-                    buffer.append("\\");
-                    buffer.append(folderName);
                     buffer.append(folderSeperator);
                     buffer.append(i);
+                    File file = new File(buffer.toString());
+                    fileList.add(file);
 
+            }
+        }
+
+        for(int i =0;i<fileList.size();i++)
+        {
+            File file = null;
+            file = fileList.get(i);
+            try{
+                if(file.mkdir()) {
+                    System.out.println("Directory Created");
+                } else {
+                    System.out.println("Directory is not created");
+                }
+            } catch(Exception e){
+                e.printStackTrace();
             }
         }
     }
