@@ -77,6 +77,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setText(text);
         button.addActionListener(this);
+        button.setMaximumSize(new Dimension(259,20));
         container.add(button);
     }
 
@@ -84,7 +85,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         label.setText(text);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        label.setMaximumSize(new Dimension(100, 100));
+        label.setMaximumSize(new Dimension(259, 20));
         label.setVisible(show);
         container.add(label);
     }
@@ -92,7 +93,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     private void addATextBox(Container container, boolean show, JTextField textField)
     {
         textField.setAlignmentX(Component.CENTER_ALIGNMENT);
-        textField.setMaximumSize(new Dimension(200, 100));
+        textField.setMaximumSize(new Dimension(259, 20));
         textField.setVisible(show);
         container.add(textField);
     }
@@ -110,7 +111,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(jFrame.getContentPane());
         jFrame.pack();
-        jFrame.setSize(200,300);
+        jFrame.setSize(260,140);
         jFrame.setVisible(true);
     }
 
