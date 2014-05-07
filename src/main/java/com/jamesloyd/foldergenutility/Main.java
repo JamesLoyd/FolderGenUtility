@@ -28,7 +28,7 @@ public class Main
     //this will get refactored soon
     public static void main(String args[]) throws Exception
     {
-        int option =0;
+       /* int option =0;
         Scanner scanner = new Scanner(System.in);
         String location;
         String folderName;
@@ -46,6 +46,7 @@ public class Main
         FolderGen.FolderGenBuilder folderBuilder = new FolderGen.FolderGenBuilder(location,folderName);
         FolderGen folderGen = folderBuilder.build();
         folderGen.generateFolders();
+        */
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

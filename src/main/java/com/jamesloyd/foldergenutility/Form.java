@@ -1,9 +1,10 @@
 package com.jamesloyd.foldergenutility;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 /**
  *   Copyright (c) 2014 James Loyd
@@ -26,53 +27,112 @@ import java.awt.event.ActionListener;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-public class Form extends JFrame implements ActionListener
+public class Form extends JFrame implements ActionListener , ItemListener
 {
-    JPanel toppanel;
-    JButton submitbutton;
-    JLabel yolabel;
+
+    private JTextField textFieldLocation;
+    private JTextField textFieldNumberOfFolders;
+    private JCheckBox checkboxForNumber;
+    private JButton submitButton;
+    private JLabel labelForFolderLocation;
+    private JLabel labelForMultipleFoldersIncrement;
+
+    JFrame jFrame = new JFrame("Folder Generation Utility | FolderGenUtility");
 
     public Form()
     {
+        this.textFieldLocation = new JTextField();
+        this.textFieldNumberOfFolders = new JTextField();
+        this.checkboxForNumber = new JCheckBox();
+        this.submitButton = new JButton();
+        this.labelForFolderLocation = new JLabel();
+        this.labelForMultipleFoldersIncrement = new JLabel();
 
     }
 
     public  void addComponentsToPane(Container pane)
     {
         pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
-        addAbutton("Button 1", pane);
-        addALabel("This is a label",pane);
+        addALabel("<html><p>Please insert a folder location</p></html>", pane, true, labelForFolderLocation);
+        addATextBox(pane, true, textFieldLocation);
+        addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
+        addACheckBox(pane, checkboxForNumber);
+        addATextBox(pane, false,textFieldNumberOfFolders);
+        addAbutton("Submit Button", pane, submitButton);
+
     }
 
-    private  void addAbutton(String text, Container container)
+    private  void addAbutton(String text, Container container, JButton button)
     {
-
-        JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setText(text);
         button.addActionListener(this);
         container.add(button);
     }
 
-    private  void addALabel(String text, Container container)
+    private  void addALabel(String text, Container container, boolean show, JLabel label)
     {
-        JLabel panel = new JLabel(text);
-        panel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        container.add(panel);
+        label.setText(text);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setMaximumSize(new Dimension(100, 100));
+        label.setVisible(show);
+        container.add(label);
+    }
+
+    private void addATextBox(Container container, boolean show, JTextField textField)
+    {
+        textField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        textField.setMaximumSize(new Dimension(200, 100));
+        textField.setVisible(show);
+        container.add(textField);
+    }
+
+    public void addACheckBox(Container container, JCheckBox checkBox)
+    {
+        checkBox.setAlignmentX(Component.CENTER_ALIGNMENT);
+        checkBox.setText("Click me to set the number of folders");
+        checkBox.addItemListener(this);
+        container.add(checkBox);
     }
 
     public  void createShowGUI()
     {
-        JFrame jFrame = new JFrame("Welcome");
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(jFrame.getContentPane());
         jFrame.pack();
+        jFrame.setSize(200,300);
         jFrame.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-     JButton src = (JButton) e.getSource();
-     System.out.println(src.getText());
+        if(e.getSource() == submitButton)
+        {
+            System.out.println("Yo");
+        }
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e)
+    {
+        if(e.getStateChange() == ItemEvent.SELECTED)
+        {
+            jFrame.setSize(200,400);
+            textFieldNumberOfFolders.setVisible(true);
+            jFrame.invalidate();
+            jFrame.validate();
+
+
+        }
+        else
+        {
+            textFieldNumberOfFolders.setVisible(false);
+            jFrame.setSize(200,300);
+            jFrame.invalidate();
+            jFrame.validate();
+        }
+
+
     }
 }
