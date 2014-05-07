@@ -1,5 +1,7 @@
 package com.jamesloyd.foldergenutility;
+import javax.swing.*;
 import java.util.Scanner;
+
 /**
  *   Copyright (c) 2014 James Loyd
  *
@@ -44,5 +46,14 @@ public class Main
         FolderGen.FolderGenBuilder folderBuilder = new FolderGen.FolderGenBuilder(location,folderName);
         FolderGen folderGen = folderBuilder.build();
         folderGen.generateFolders();
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Form form = new Form();
+                form.createShowGUI();
+            }
+        });
+
+
     }
 }
