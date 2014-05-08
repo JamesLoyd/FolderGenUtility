@@ -1,10 +1,13 @@
 package com.jamesloyd.foldergenutility;
+import javafx.stage.FileChooser;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -36,18 +39,21 @@ public class Form extends JFrame implements ActionListener , ItemListener
     private JCheckBox checkboxForNumber;
     private JButton submitButton;
     private JLabel labelForFolderLocation;
+    private JLabel labelFolderLocation;
     private JLabel labelForMultipleFoldersName;
     private JTextField textForFolderName;
     private JLabel labelForFolderName;
     private JLabel labelForMultipleFoldersIncrement;
     private JToolBar toolBar;
+    private JButton selectFolder;
 
     JFrame jFrame = new JFrame("FolderGenUtility");
-
+    String path = "";
     public Form()
     {
         this.toolBar = new JToolBar();
         this.textFieldLocation = new JTextField();
+        this.labelFolderLocation = new JLabel();
         this.textFieldNumberOfFolders = new JTextField();
         this.checkboxForNumber = new JCheckBox();
         this.submitButton = new JButton();
@@ -56,32 +62,43 @@ public class Form extends JFrame implements ActionListener , ItemListener
         this.textForFolderName = new JTextField();
         this.labelForFolderName = new JLabel();
         this.labelForMultipleFoldersName = new JLabel();
+        this.selectFolder = new JButton();
 
     }
 
     public  void addComponentsToPane(Container pane)
     {
 
-        pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
-        addAToolbar("yo",pane,toolBar);
+        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+        addAToolbar("yo", pane, toolBar);
         addALabel("<html><p>Please insert a folder location</p></html>", pane, true, labelForFolderLocation);
-        addATextBox(pane, true, textFieldLocation);
+        addAFileChooser(pane,selectFolder);
+        addALabel("",pane,false, labelFolderLocation );
+        //addATextBox(pane, true, textFieldLocation);
         //addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
         //addACheckBox(pane, checkboxForNumber);
         //addALabel("<html><p>Please insert the stuff</p></html>",pane,false,labelForMultipleFoldersName);
         //addATextBox(pane, false,textFieldNumberOfFolders);
-        addALabel("<html><p>Please insert the folder name</p></html>",pane,true,labelForFolderName);
+        addALabel("<html><p>Please insert the folder name</p></html>", pane, true, labelForFolderName);
         addATextBox(pane,true,textForFolderName);
         addAbutton("Submit Button", pane, submitButton);
 
+    }
+
+    private void addAFileChooser(Container container, JButton selectFolder)
+    {
+       selectFolder.setText("Select a Folder");
+       selectFolder.setAlignmentX(Component.CENTER_ALIGNMENT);
+       selectFolder.setMaximumSize(new Dimension(259,20));
+       selectFolder.addActionListener(this);
+      container.add(selectFolder);
     }
 
     private void addAToolbar(String text, Container container, JToolBar toolBar)
     {
         JButton button = new JButton();
         toolBar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        toolBar.setToolTipText("yoyo");
-        toolBar.setMaximumSize(new Dimension(259, 30));
+        toolBar.setMaximumSize(new Dimension(300, 30));
         toolBar.add(button);
         toolBar.setFloatable(false);
         container.add(toolBar);
@@ -99,7 +116,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         label.setText(text);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        label.setMaximumSize(new Dimension(259, 20));
+        label.setMaximumSize(new Dimension(259, 30));
         label.setVisible(show);
         container.add(label);
     }
@@ -125,10 +142,12 @@ public class Form extends JFrame implements ActionListener , ItemListener
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(jFrame.getContentPane());
         jFrame.pack();
-        jFrame.setSize(260,150);
+        jFrame.setSize(300,190);
         jFrame.setVisible(true);
-        jFrame.setResizable(false);
+        jFrame.setMaximizedBounds(new Rectangle(300,200));
+        jFrame.setMaximumSize(new Dimension(300,350));
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e)
@@ -144,9 +163,31 @@ public class Form extends JFrame implements ActionListener , ItemListener
                FolderGen folderGen = FolderGen.getFolderWithLocationAndNameOnly(textFieldLocation.getText(),textForFolderName.getText());
                folderGen.generateFolders();
             }
+
+
         }
+
+        if(e.getSource() == selectFolder)
+        {
+            labelFolderLocation.setVisible(false);
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            fileChooser.showOpenDialog(this);
+            fileChooser.approveSelection();
+            path = fileChooser.getSelectedFile().getPath();
+            labelFolderLocation.setText("<html><p>The current path is: " + path + "</p></html>");
+            labelFolderLocation.setVisible(true);
+            jFrame.invalidate();
+            jFrame.validate();
+        }
+
     }
 
+
+    public void openFileDialog()
+    {
+
+    }
 
     @Override
     public void itemStateChanged(ItemEvent e)
