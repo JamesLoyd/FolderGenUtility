@@ -46,6 +46,9 @@ public class Form extends JFrame implements ActionListener , ItemListener
     private JLabel labelForMultipleFoldersIncrement;
     private JToolBar toolBar;
     private JButton selectFolder;
+    private JTextArea textArea;
+    private JScrollPane scrollpane;
+    private JButton clearButton;
 
     JFrame jFrame = new JFrame("FolderGenUtility");
     String path = "";
@@ -63,7 +66,9 @@ public class Form extends JFrame implements ActionListener , ItemListener
         this.labelForFolderName = new JLabel();
         this.labelForMultipleFoldersName = new JLabel();
         this.selectFolder = new JButton();
-
+        this.textArea = new JTextArea();
+        this.scrollpane = new JScrollPane(this.textArea);
+        this.clearButton = new JButton();
     }
 
     public  void addComponentsToPane(Container pane)
@@ -73,7 +78,8 @@ public class Form extends JFrame implements ActionListener , ItemListener
         addAToolbar("yo", pane, toolBar);
         addALabel("<html><p>Please insert a folder location</p></html>", pane, true, labelForFolderLocation);
         addAFileChooser(pane,selectFolder);
-        addALabel("",pane,false, labelFolderLocation );
+        addALabel("Current Root Directory Selected:" ,pane,false, labelFolderLocation);
+        addAScrollPane(pane, scrollpane);
         //addATextBox(pane, true, textFieldLocation);
         //addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
         //addACheckBox(pane, checkboxForNumber);
@@ -82,8 +88,17 @@ public class Form extends JFrame implements ActionListener , ItemListener
         addALabel("<html><p>Please insert the folder name</p></html>", pane, true, labelForFolderName);
         addATextBox(pane,true,textForFolderName);
         addAbutton("Submit Button", pane, submitButton);
+        addAbutton("Clear",pane, clearButton);
 
     }
+
+    private void addAScrollPane(Container container, JScrollPane scrollPane)
+    {
+        scrollPane.setVisible(false);
+        scrollPane.setMaximumSize(new Dimension(259,35));
+        container.add(scrollPane);
+    }
+
 
     private void addAFileChooser(Container container, JButton selectFolder)
     {
@@ -116,7 +131,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         label.setText(text);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        label.setMaximumSize(new Dimension(259, 30));
+        label.setMaximumSize(new Dimension(300, 30));
         label.setVisible(show);
         container.add(label);
     }
@@ -142,9 +157,9 @@ public class Form extends JFrame implements ActionListener , ItemListener
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(jFrame.getContentPane());
         jFrame.pack();
-        jFrame.setSize(300,190);
+        jFrame.setSize(300,250);
         jFrame.setVisible(true);
-        jFrame.setMaximizedBounds(new Rectangle(300,200));
+        jFrame.setMaximizedBounds(new Rectangle(300,300));
         jFrame.setMaximumSize(new Dimension(300,350));
     }
 
@@ -169,14 +184,29 @@ public class Form extends JFrame implements ActionListener , ItemListener
 
         if(e.getSource() == selectFolder)
         {
-            labelFolderLocation.setVisible(false);
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fileChooser.showOpenDialog(this);
             fileChooser.approveSelection();
-            path = fileChooser.getSelectedFile().getPath();
-            labelFolderLocation.setText("<html><p>The current path is: " + path + "</p></html>");
+            path = fileChooser.getSelectedFile().getAbsolutePath();
+            StringBuffer buffer = new StringBuffer();
+            buffer.append(path);
+            System.out.println(path);
+            textArea.setText(buffer.toString());
+            textArea.setMaximumSize(new Dimension(259,20));
             labelFolderLocation.setVisible(true);
+            scrollpane.setVisible(true);
+            textArea.setVisible(true);
+            jFrame.invalidate();
+            jFrame.validate();
+        }
+
+        if(e.getSource() == clearButton)
+        {
+            textArea.setVisible(false);
+            labelFolderLocation.setVisible(false);
+            scrollpane.setVisible(false);
+            jFrame.setSize(new Dimension(300,250));
             jFrame.invalidate();
             jFrame.validate();
         }
