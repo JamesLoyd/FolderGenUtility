@@ -127,6 +127,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         jFrame.pack();
         jFrame.setSize(260,150);
         jFrame.setVisible(true);
+        jFrame.setResizable(false);
     }
 
     @Override
