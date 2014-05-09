@@ -1,4 +1,5 @@
 package com.jamesloyd.foldergenutility;
+import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -105,18 +106,25 @@ public class FolderGen
 
     private void generate(ArrayList<File> fileList)
     {
+        StringBuffer buffer = new StringBuffer();
         for (int i = 0; i < fileList.size() ; i++)
         {
             File file = null;
             file = fileList.get(i);
             try{
                 if(file.mkdir()) {
-                    System.out.println("Directory Created");
+                    buffer.append(file.toString());
+                    buffer.append(" has been created");
+                    JOptionPane.showMessageDialog(null,buffer.toString(),"SUCCESS", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    System.out.println("Directory is not created");
+                   buffer.append(file.toString());
+                   buffer.append(" has not been created");
+                   JOptionPane.showMessageDialog(null,buffer.toString(),"ERROR",JOptionPane.OK_OPTION);
                 }
             } catch(Exception e){
                 e.printStackTrace();
+                buffer.append("Please log an issue");
+                JOptionPane.showMessageDialog(null,buffer.toString(),"ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

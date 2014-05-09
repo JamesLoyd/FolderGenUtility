@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
-import java.io.IOException;
 
 /**
  *   Copyright (c) 2014 James Loyd
@@ -50,6 +49,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
 
     JFrame jFrame = new JFrame("FolderGenUtility");
     String path = "";
+    JFileChooser fileChooser = new JFileChooser();
     public Form()
     {
         this.toolBar = new JToolBar();
@@ -75,7 +75,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         addAToolbar("yo", pane, toolBar);
         addALabel("<html><p>Please insert a folder location</p></html>", pane, true, labelForFolderLocation);
         addAFileChooser(pane,selectFolder);
-        addALabel("Current Root Directory Selected:" ,pane,false, labelFolderLocation);
+        addALabel("Current Root Directory Selected:" ,pane,true, labelFolderLocation);
         addAScrollPane(pane, scrollpane);
         //addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
         //addACheckBox(pane, checkboxForNumber);
@@ -90,7 +90,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
 
     private void addAScrollPane(Container container, JScrollPane scrollPane)
     {
-        scrollPane.setVisible(false);
+        scrollPane.setVisible(true);
         scrollPane.setMaximumSize(new Dimension(259, 45));
         container.add(scrollPane);
     }
@@ -153,10 +153,14 @@ public class Form extends JFrame implements ActionListener , ItemListener
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(jFrame.getContentPane());
         jFrame.pack();
-        jFrame.setSize(300,250);
+        jFrame.setSize(300, 290);
         jFrame.setVisible(true);
-        jFrame.setMaximizedBounds(new Rectangle(300,300));
-        jFrame.setMaximumSize(new Dimension(300,350));
+        jFrame.setMaximizedBounds(new Rectangle(300, 290));
+        jFrame.setMaximumSize(new Dimension(300, 350));
+        fileChooser.setCurrentDirectory( new File("."));
+        textArea.setEditable(false);
+        textArea.setText(fileChooser.getCurrentDirectory().toString());
+        jFrame.setResizable(false);
     }
 
 
@@ -165,22 +169,19 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         if(e.getSource() == submitButton)
         {
-            if (checkboxForNumber.isSelected())
+            if(path.isEmpty() && textForFolderName.getText().isEmpty())
             {
-
+                JOptionPane.showMessageDialog(null, "Please choose a root location", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
             else
             {
                FolderGen folderGen = FolderGen.getFolderWithLocationAndNameOnly(path.toString(),textForFolderName.getText());
-               folderGen.generateFolders();
+                folderGen.generateFolders();
             }
-
-
         }
 
         if(e.getSource() == selectFolder)
         {
-            JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fileChooser.setCurrentDirectory(new File("."));
             fileChooser.showOpenDialog(this);
@@ -191,19 +192,15 @@ public class Form extends JFrame implements ActionListener , ItemListener
             System.out.println(path);
             textArea.setText(buffer.toString());
             textArea.setMaximumSize(new Dimension(259,20));
-            labelFolderLocation.setVisible(true);
-            scrollpane.setVisible(true);
-            textArea.setVisible(true);
             jFrame.invalidate();
             jFrame.validate();
         }
 
         if(e.getSource() == clearButton)
         {
-            textArea.setVisible(false);
-            labelFolderLocation.setVisible(false);
-            scrollpane.setVisible(false);
-            jFrame.setSize(new Dimension(300,250));
+            textArea.setText(fileChooser.getCurrentDirectory().toString());
+            jFrame.setSize(new Dimension(300,290));
+
             jFrame.invalidate();
             jFrame.validate();
         }
