@@ -80,11 +80,11 @@ public class Form extends JFrame implements ActionListener , ItemListener
         addAFileChooser(pane,selectFolder);
         addALabel("Current Root Directory Selected:" ,pane,false, labelFolderLocation);
         addAScrollPane(pane, scrollpane);
-        //addATextBox(pane, true, textFieldLocation);
-        //addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
-        //addACheckBox(pane, checkboxForNumber);
-        //addALabel("<html><p>Please insert the stuff</p></html>",pane,false,labelForMultipleFoldersName);
-        //addATextBox(pane, false,textFieldNumberOfFolders);
+        addATextBox(pane, true, textFieldLocation);
+        addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
+        addACheckBox(pane, checkboxForNumber);
+        addALabel("<html><p>Please insert the stuff</p></html>",pane,false,labelForMultipleFoldersName);
+        addATextBox(pane, false,textFieldNumberOfFolders);
         addALabel("<html><p>Please insert the folder name</p></html>", pane, true, labelForFolderName);
         addATextBox(pane,true,textForFolderName);
         addAbutton("Submit Button", pane, submitButton);
@@ -223,10 +223,9 @@ public class Form extends JFrame implements ActionListener , ItemListener
     @Override
     public void itemStateChanged(ItemEvent e)
     {
-        /*
         if(e.getStateChange() == ItemEvent.SELECTED)
         {
-            jFrame.setSize(200,400);
+            jFrame.setSize(300,350);
             textFieldNumberOfFolders.setVisible(true);
             labelForMultipleFoldersName.setVisible(true);
             jFrame.invalidate();
@@ -238,11 +237,9 @@ public class Form extends JFrame implements ActionListener , ItemListener
         {
             textFieldNumberOfFolders.setVisible(false);
             labelForMultipleFoldersName.setVisible(false);
-            jFrame.setSize(200,300);
+            jFrame.setSize(300,300);
             jFrame.invalidate();
             jFrame.validate();
         }
-    */
-
     }
 }
