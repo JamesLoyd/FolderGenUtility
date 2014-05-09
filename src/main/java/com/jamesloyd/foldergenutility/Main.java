@@ -1,6 +1,4 @@
 package com.jamesloyd.foldergenutility;
-import javax.swing.*;
-import java.util.Scanner;
 
 /**
  *   Copyright (c) 2014 James Loyd
@@ -50,7 +48,7 @@ public class Main
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Form form = new Form();
+                MainForm form = new MainForm();
                 form.createShowGUI();
             }
         });

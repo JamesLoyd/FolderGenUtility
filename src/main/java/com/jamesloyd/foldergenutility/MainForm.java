@@ -30,7 +30,7 @@ import java.io.File;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-public class Form extends JFrame implements ActionListener , ItemListener
+public class MainForm extends JFrame implements ActionListener , ItemListener
 {
     private JTextField textFieldNumberOfFolders;
     private JCheckBox checkboxForNumber;
@@ -50,7 +50,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     JFrame jFrame = new JFrame("FolderGenUtility");
     String path = "";
     JFileChooser fileChooser = new JFileChooser();
-    public Form()
+    public MainForm()
     {
         this.toolBar = new JToolBar();
         this.labelFolderLocation = new JLabel();
@@ -143,7 +143,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         checkBox.setAlignmentX(Component.CENTER_ALIGNMENT);
         checkBox.setText("Click me to set the number of folders");
-        checkBox.setMaximumSize(new Dimension(290,20));
+        checkBox.setMaximumSize(new Dimension(290, 20));
         checkBox.addItemListener(this);
         container.add(checkBox);
     }
@@ -205,7 +205,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         if(e.getSource() == clearButton)
         {
             textArea.setText(fileChooser.getCurrentDirectory().toString());
-            jFrame.setSize(new Dimension(300,290));
+            jFrame.setSize(new Dimension(300, 290));
             textFieldNumberOfFolders.setText("");
             textForFolderName.setText("");
             jFrame.invalidate();
