@@ -77,10 +77,10 @@ public class Form extends JFrame implements ActionListener , ItemListener
         addAFileChooser(pane,selectFolder);
         addALabel("Current Root Directory Selected:" ,pane,true, labelFolderLocation);
         addAScrollPane(pane, scrollpane);
-        //addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
-        //addACheckBox(pane, checkboxForNumber);
-        //addALabel("<html><p>Please insert the stuff</p></html>",pane,false,labelForMultipleFoldersName);
-       // addATextBox(pane, false,textFieldNumberOfFolders);
+        addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
+        addACheckBox(pane, checkboxForNumber);
+        addALabel("<html><p>Please insert the number total</p></html>",pane,false,labelForMultipleFoldersName);
+        addATextBox(pane, false,textFieldNumberOfFolders);
         addALabel("<html><p>Please insert the folder name</p></html>", pane, true, labelForFolderName);
         addATextBox(pane,true,textForFolderName);
         addAbutton("Submit Button", pane, submitButton);
@@ -161,6 +161,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         textArea.setEditable(false);
         textArea.setText(fileChooser.getCurrentDirectory().toString());
         jFrame.setResizable(false);
+        path = textArea.getText();
     }
 
 
@@ -173,11 +174,17 @@ public class Form extends JFrame implements ActionListener , ItemListener
             {
                 JOptionPane.showMessageDialog(null, "Please choose a root location", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
+            else if(textFieldNumberOfFolders.toString().isEmpty() == false)
+            {
+                FolderGen folderGen= FolderGen.getFolderWithNumberOnly(path.toString(),textForFolderName.getText(),textFieldNumberOfFolders.getText());
+                folderGen.generateFolders();
+            }
             else
             {
                FolderGen folderGen = FolderGen.getFolderWithLocationAndNameOnly(path.toString(),textForFolderName.getText());
                 folderGen.generateFolders();
             }
+
         }
 
         if(e.getSource() == selectFolder)
