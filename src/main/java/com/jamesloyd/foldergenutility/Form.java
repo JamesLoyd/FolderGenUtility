@@ -67,7 +67,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         this.labelForMultipleFoldersName = new JLabel();
         this.selectFolder = new JButton();
         this.textArea = new JTextArea();
-        this.scrollpane = new JScrollPane(this.textArea);
+        this.scrollpane = new JScrollPane(this.textArea,JScrollPane.VERTICAL_SCROLLBAR_NEVER,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         this.clearButton = new JButton();
     }
 
@@ -95,7 +95,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     private void addAScrollPane(Container container, JScrollPane scrollPane)
     {
         scrollPane.setVisible(false);
-        scrollPane.setMaximumSize(new Dimension(259,35));
+        scrollPane.setMaximumSize(new Dimension(259, 45));
         container.add(scrollPane);
     }
 
@@ -186,6 +186,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            fileChooser.setCurrentDirectory(new File("."));
             fileChooser.showOpenDialog(this);
             fileChooser.approveSelection();
             path = fileChooser.getSelectedFile().getAbsolutePath();
