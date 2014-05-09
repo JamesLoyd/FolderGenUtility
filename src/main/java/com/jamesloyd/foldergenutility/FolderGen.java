@@ -43,13 +43,14 @@ public class FolderGen
 
     public void generateFolders()
     {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append(location);
-        buffer.append("\\");
-        buffer.append(folderName);
+
         ArrayList<File> fileList = new ArrayList<>();
         if(numberOfFiles == null && startpoint == null)
         {
+            StringBuffer buffer = new StringBuffer();
+            buffer.append(location);
+            buffer.append("\\");
+            buffer.append(folderName);
             File file = new File(buffer.toString());
             fileList.add(file);
         }
@@ -57,8 +58,12 @@ public class FolderGen
         else if (numberOfFiles !=null && startpoint == null)
         {
             //assume 1 is default number
-            for (int i = 0; i < Integer.parseInt(numberOfFiles) ; i++)
+            for (int i = 1; i <= Integer.parseInt(numberOfFiles) ; i++)
             {
+                StringBuffer buffer = new StringBuffer();
+                buffer.append(location);
+                buffer.append("\\");
+                buffer.append(folderName);
                 buffer.append(i);
                 File file = new File(buffer.toString());
                 fileList.add(file);
@@ -67,8 +72,12 @@ public class FolderGen
 
         else if (numberOfFiles != null && startpoint == null && Character.isDefined(folderSeperator))
         {
-            for (int i = 0; i < Integer.parseInt(numberOfFiles) ; i++)
+            for (int i = 1; i <= Integer.parseInt(numberOfFiles) ; i++)
             {
+                StringBuffer buffer = new StringBuffer();
+                buffer.append(location);
+                buffer.append("\\");
+                buffer.append(folderName);
                 buffer.append(folderSeperator);
                 buffer.append(i);
                 File file = new File((buffer.toString()));
@@ -80,8 +89,12 @@ public class FolderGen
 
         else if (numberOfFiles !=null && startpoint !=null && Character.isDefined(folderSeperator))
         {
-            for (int i = Integer.parseInt(startpoint); i < Integer.parseInt(numberOfFiles) ; i++)
+            for (int i = Integer.parseInt(startpoint); i <= Integer.parseInt(numberOfFiles) ; i++)
             {
+                StringBuffer buffer = new StringBuffer();
+                buffer.append(location);
+                buffer.append("\\");
+                buffer.append(folderName);
                 buffer.append(folderSeperator);
                 buffer.append(i);
                 File file = new File((buffer.toString()));
@@ -91,12 +104,16 @@ public class FolderGen
 
         else
         {
-            for (int i = Integer.parseInt(startpoint);  i < Integer.parseInt(numberOfFiles) ;  i++)
+            for (int i = Integer.parseInt(startpoint);  i <= Integer.parseInt(numberOfFiles) ;  i++)
             {
-                    buffer.append(folderSeperator);
-                    buffer.append(i);
-                    File file = new File(buffer.toString());
-                    fileList.add(file);
+                StringBuffer buffer = new StringBuffer();
+                buffer.append(location);
+                buffer.append("\\");
+                buffer.append(folderName);
+                buffer.append(folderSeperator);
+                buffer.append(i);
+                File file = new File(buffer.toString());
+                fileList.add(file);
 
             }
         }
@@ -106,22 +123,33 @@ public class FolderGen
 
     private void generate(ArrayList<File> fileList)
     {
-        StringBuffer buffer = new StringBuffer();
-        for (int i = 0; i < fileList.size() ; i++)
+        int start = 0;
+        if(startpoint == null)
+        {
+            start = 0;
+        }
+        else
+        {
+            start = Integer.parseInt(startpoint);
+        }
+        for (int i = start; i < fileList.size() ; i++)
         {
             File file = null;
             file = fileList.get(i);
             try{
                 if(file.mkdir()) {
+                    StringBuffer buffer = new StringBuffer();
                     buffer.append(file.toString());
                     buffer.append(" has been created");
                     JOptionPane.showMessageDialog(null,buffer.toString(),"SUCCESS", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                   buffer.append(file.toString());
+                    StringBuffer buffer = new StringBuffer();
+                    buffer.append(file.toString());
                    buffer.append(" has not been created");
                    JOptionPane.showMessageDialog(null,buffer.toString(),"ERROR",JOptionPane.OK_OPTION);
                 }
             } catch(Exception e){
+                StringBuffer buffer = new StringBuffer();
                 e.printStackTrace();
                 buffer.append("Please log an issue");
                 JOptionPane.showMessageDialog(null,buffer.toString(),"ERROR", JOptionPane.ERROR_MESSAGE);

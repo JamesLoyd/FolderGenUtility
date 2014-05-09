@@ -77,7 +77,6 @@ public class Form extends JFrame implements ActionListener , ItemListener
         addAFileChooser(pane,selectFolder);
         addALabel("Current Root Directory Selected:" ,pane,true, labelFolderLocation);
         addAScrollPane(pane, scrollpane);
-        addALabel("<html><p>Would you like to generate a large number of folders?</p></html>", pane, true, labelForMultipleFoldersIncrement);
         addACheckBox(pane, checkboxForNumber);
         addALabel("<html><p>Please insert the number total</p></html>",pane,false,labelForMultipleFoldersName);
         addATextBox(pane, false,textFieldNumberOfFolders);
@@ -91,7 +90,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     private void addAScrollPane(Container container, JScrollPane scrollPane)
     {
         scrollPane.setVisible(true);
-        scrollPane.setMaximumSize(new Dimension(259, 45));
+        scrollPane.setMaximumSize(new Dimension(290, 45));
         container.add(scrollPane);
     }
 
@@ -100,7 +99,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
        selectFolder.setText("Select a Folder");
        selectFolder.setAlignmentX(Component.CENTER_ALIGNMENT);
-       selectFolder.setMaximumSize(new Dimension(259,20));
+       selectFolder.setMaximumSize(new Dimension(290,20));
        selectFolder.addActionListener(this);
       container.add(selectFolder);
     }
@@ -109,7 +108,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         JButton button = new JButton();
         toolBar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        toolBar.setMaximumSize(new Dimension(300, 30));
+        toolBar.setMaximumSize(new Dimension(290, 30));
         toolBar.add(button);
         toolBar.setFloatable(false);
         container.add(toolBar);
@@ -119,7 +118,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setText(text);
         button.addActionListener(this);
-        button.setMaximumSize(new Dimension(259,20));
+        button.setMaximumSize(new Dimension(290,20));
         container.add(button);
     }
 
@@ -127,7 +126,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         label.setText(text);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        label.setMaximumSize(new Dimension(300, 30));
+        label.setMaximumSize(new Dimension(290, 30));
         label.setVisible(show);
         container.add(label);
     }
@@ -135,7 +134,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     private void addATextBox(Container container, boolean show, JTextField textField)
     {
         textField.setAlignmentX(Component.CENTER_ALIGNMENT);
-        textField.setMaximumSize(new Dimension(259, 20));
+        textField.setMaximumSize(new Dimension(290, 20));
         textField.setVisible(show);
         container.add(textField);
     }
@@ -144,6 +143,7 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         checkBox.setAlignmentX(Component.CENTER_ALIGNMENT);
         checkBox.setText("Click me to set the number of folders");
+        checkBox.setMaximumSize(new Dimension(290,20));
         checkBox.addItemListener(this);
         container.add(checkBox);
     }
@@ -153,11 +153,10 @@ public class Form extends JFrame implements ActionListener , ItemListener
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(jFrame.getContentPane());
         jFrame.pack();
-        jFrame.setSize(300, 290);
+        jFrame.setSize(300, 300);
         jFrame.setVisible(true);
         jFrame.setMaximizedBounds(new Rectangle(300, 290));
-        jFrame.setMaximumSize(new Dimension(300, 350));
-        fileChooser.setCurrentDirectory( new File("."));
+        fileChooser.setCurrentDirectory(new File("."));
         textArea.setEditable(false);
         textArea.setText(fileChooser.getCurrentDirectory().toString());
         jFrame.setResizable(false);
@@ -170,11 +169,11 @@ public class Form extends JFrame implements ActionListener , ItemListener
     {
         if(e.getSource() == submitButton)
         {
-            if(path.isEmpty() && textForFolderName.getText().isEmpty())
+            if(textForFolderName.getText().equals(""))
             {
                 JOptionPane.showMessageDialog(null, "Please choose a root location", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-            else if(textFieldNumberOfFolders.toString().isEmpty() == false)
+            else if(textFieldNumberOfFolders.getText().equals("") == false)
             {
                 FolderGen folderGen= FolderGen.getFolderWithNumberOnly(path.toString(),textForFolderName.getText(),textFieldNumberOfFolders.getText());
                 folderGen.generateFolders();
@@ -207,7 +206,8 @@ public class Form extends JFrame implements ActionListener , ItemListener
         {
             textArea.setText(fileChooser.getCurrentDirectory().toString());
             jFrame.setSize(new Dimension(300,290));
-
+            textFieldNumberOfFolders.setText("");
+            textForFolderName.setText("");
             jFrame.invalidate();
             jFrame.validate();
         }
