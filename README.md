@@ -5,10 +5,11 @@ This program will simply automate the creation of large amount of folders. This 
 
 Planned Features
 ===
+* Custom Configs
 * Handle multiple locations at once
 * Handle subfolder creation
 * Autodeployment of Files
-
+ * Save deployment configuration
 
 License
 ===
