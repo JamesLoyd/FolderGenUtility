@@ -188,7 +188,7 @@ public class MainForm extends JFrame implements ActionListener , ItemListener
                 {
                     numberOfFiles = textFieldNumberOfFolders.getText();
                 }
-                SimpleFolder simpleFolderBuilder = FolderGenFactory.createFolders(path.toString(),textForFolderName.getText().toString(),startpoint,numberOfFiles,placeholder);
+                SimpleFolder simpleFolderBuilder = SimpleFolderFactory.createFolders(path.toString(), textForFolderName.getText().toString(), startpoint, numberOfFiles, placeholder);
                 simpleFolderBuilder.generateFolders();
             }
 

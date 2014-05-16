@@ -20,7 +20,7 @@ package com.jamesloyd.foldergenutility;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-public class FolderGenFactory
+public class SimpleFolderFactory
 {
     public static SimpleFolder createFolders(String location, String folderName, String startpoint, String numberOfFiles, char folderSeperator)
     {
