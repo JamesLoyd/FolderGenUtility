@@ -46,6 +46,9 @@ public class MainForm extends JFrame implements ActionListener , ItemListener
     private JTextArea textArea;
     private JScrollPane scrollpane;
     private JButton clearButton;
+    char placeholder = '\u0000';
+    String startpoint = null;
+    String numberOfFiles = null;
 
     JFrame jFrame = new JFrame("FolderGenUtility");
     String path = "";
@@ -161,6 +164,7 @@ public class MainForm extends JFrame implements ActionListener , ItemListener
         textArea.setText(fileChooser.getCurrentDirectory().toString());
         jFrame.setResizable(false);
         path = textArea.getText();
+        textFieldNumberOfFolders.setText(null);
     }
 
 
@@ -169,19 +173,24 @@ public class MainForm extends JFrame implements ActionListener , ItemListener
     {
         if(e.getSource() == submitButton)
         {
+            startpoint = null;
             if(textForFolderName.getText().equals(""))
             {
                 JOptionPane.showMessageDialog(null, "Please choose a root location", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-            else if(textFieldNumberOfFolders.getText().equals("") == false)
-            {
-                FolderGen folderGen= FolderGen.getFolderWithNumberOnly(path.toString(),textForFolderName.getText(),textFieldNumberOfFolders.getText());
-                folderGen.generateFolders();
-            }
             else
             {
-               FolderGen folderGen = FolderGen.getFolderWithLocationAndNameOnly(path.toString(),textForFolderName.getText());
-                folderGen.generateFolders();
+                System.out.println(placeholder);
+                if(textFieldNumberOfFolders.getText() == "")
+                {
+                    numberOfFiles = null;
+                }
+                else
+                {
+                    numberOfFiles = textFieldNumberOfFolders.getText();
+                }
+                FolderGen folderGenBuilder = FolderGenFactory.createFolders(path.toString(),textForFolderName.getText().toString(),startpoint,numberOfFiles,placeholder);
+                folderGenBuilder.generateFolders();
             }
 
         }

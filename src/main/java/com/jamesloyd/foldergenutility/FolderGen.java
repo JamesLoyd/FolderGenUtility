@@ -70,7 +70,7 @@ public class FolderGen
             }
         }
 
-        else if (numberOfFiles != null && startpoint == null && Character.isDefined(folderSeperator))
+        else if (numberOfFiles != null && startpoint == null && folderSeperator != '\u0000')
         {
             for (int i = 1; i <= Integer.parseInt(numberOfFiles) ; i++)
             {
@@ -87,7 +87,7 @@ public class FolderGen
 
         }
 
-        else if (numberOfFiles !=null && startpoint !=null && Character.isDefined(folderSeperator))
+        else if (numberOfFiles !=null && startpoint !=null && folderSeperator != '\u0000')
         {
             for (int i = Integer.parseInt(startpoint); i <= Integer.parseInt(numberOfFiles) ; i++)
             {
@@ -164,31 +164,6 @@ public class FolderGen
         buffer.append("\\");
         buffer.append(folderName);
         return buffer.toString();
-    }
-
-    public static FolderGen getFolderWithLocationAndNameOnly(String location, String folderName)
-    {
-        return new FolderGenBuilder(location,folderName).build();
-    }
-
-    public static FolderGen getFolderWithNumberOnly(String location,String folderName, String numberOfFiles)
-    {
-        return new FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).build();
-    }
-
-    public static FolderGen getFolderWithoutSeperator(String location, String folderName, String numberOfFiles, String startpoint)
-    {
-        return new FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).startpoint(startpoint).build();
-    }
-
-    public static FolderGen getFolderWithoutStartpoint(String location,String folderName, String numberOfFiles, char folderSeperator)
-    {
-        return new FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
-    }
-
-    public static FolderGen getFolderWithEverything(String location, String folderName, String startpoint, String numberOfFiles, char folderSeperator)
-    {
-        return new FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).startpoint(startpoint).build();
     }
     //going for the builder pattern
     public static class FolderGenBuilder{

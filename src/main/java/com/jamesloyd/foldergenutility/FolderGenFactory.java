@@ -25,27 +25,29 @@ public class FolderGenFactory
     public static FolderGen createFolders(String location, String folderName, String startpoint, String numberOfFiles, char folderSeperator)
     {
 
-        if (startpoint == null && Character.isDefined(folderSeperator) == false && numberOfFiles != null)
+        if (startpoint == null && folderSeperator == '\u0000' && numberOfFiles != null)
         {
             return new FolderGen.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).build();
         }
-
-        else if (Character.isDefined(folderSeperator) == false && startpoint != null && numberOfFiles != null)
+/*
+        else if (folderSeperator == '\0' && startpoint != null && numberOfFiles != null)
         {
             return new FolderGen.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).startpoint(startpoint).build();
         }
 
-        else if(Character.isDefined(folderSeperator) == true && startpoint != null && numberOfFiles !=null)
+        else if(folderSeperator != '\0' && startpoint != null && numberOfFiles !=null)
         {
             return new FolderGen.FolderGenBuilder(location,folderName).startpoint(startpoint).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
         }
-        else if (Character.isDefined(folderSeperator) == true && numberOfFiles != null && startpoint == null)
+        else if (folderSeperator != '\0'&& numberOfFiles != null && startpoint == null)
         {
             return new FolderGen.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
         }
+        */
         else
         {
             return  new FolderGen.FolderGenBuilder(location,folderName).build();
+
         }
     }
 }
