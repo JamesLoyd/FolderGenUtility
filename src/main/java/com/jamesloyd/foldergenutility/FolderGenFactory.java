@@ -22,30 +22,29 @@ package com.jamesloyd.foldergenutility;
  */
 public class FolderGenFactory
 {
-    public static FolderGen createFolders(String location, String folderName, String startpoint, String numberOfFiles, char folderSeperator)
+    public static SimpleFolder createFolders(String location, String folderName, String startpoint, String numberOfFiles, char folderSeperator)
     {
 
         if (startpoint == null && folderSeperator == '\u0000' && numberOfFiles != null)
         {
-            return new FolderGen.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).build();
+            return new SimpleFolder.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).build();
         }
         else if (folderSeperator == '\0' && startpoint != null && numberOfFiles != null)
         {
-            return new FolderGen.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).startpoint(startpoint).build();
+            return new SimpleFolder.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).startpoint(startpoint).build();
         }
 
         else if(folderSeperator != '\0' && startpoint != null && numberOfFiles !=null)
         {
-            return new FolderGen.FolderGenBuilder(location,folderName).startpoint(startpoint).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
+            return new SimpleFolder.FolderGenBuilder(location,folderName).startpoint(startpoint).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
         }
         else if (folderSeperator != '\0'&& numberOfFiles != null && startpoint == null)
         {
-            return new FolderGen.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
+            return new SimpleFolder.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
         }
         else
         {
-            return  new FolderGen.FolderGenBuilder(location,folderName).build();
-
+            return  new SimpleFolder.FolderGenBuilder(location,folderName).build();
         }
     }
 }

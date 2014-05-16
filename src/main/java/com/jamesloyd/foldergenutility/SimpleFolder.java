@@ -24,7 +24,7 @@ import java.util.ArrayList;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-public class FolderGen
+public class SimpleFolder
 {
     private String location;
     private String numberOfFiles;
@@ -32,7 +32,7 @@ public class FolderGen
     private String folderName;
     private char folderSeperator;
 
-    private FolderGen(FolderGenBuilder builder)
+    private SimpleFolder(FolderGenBuilder builder)
     {
         this.folderName = builder.folderName;
         this.numberOfFiles = builder.numberOfFiles;
@@ -196,9 +196,9 @@ public class FolderGen
             return this;
         }
 
-        public FolderGen build()
+        public SimpleFolder build()
         {
-            return new FolderGen(this);
+            return new SimpleFolder(this);
         }
     }
 }

@@ -1,5 +1,4 @@
 package com.jamesloyd.foldergenutility;
-import javafx.stage.FileChooser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -189,8 +188,8 @@ public class MainForm extends JFrame implements ActionListener , ItemListener
                 {
                     numberOfFiles = textFieldNumberOfFolders.getText();
                 }
-                FolderGen folderGenBuilder = FolderGenFactory.createFolders(path.toString(),textForFolderName.getText().toString(),startpoint,numberOfFiles,placeholder);
-                folderGenBuilder.generateFolders();
+                SimpleFolder simpleFolderBuilder = FolderGenFactory.createFolders(path.toString(),textForFolderName.getText().toString(),startpoint,numberOfFiles,placeholder);
+                simpleFolderBuilder.generateFolders();
             }
 
         }

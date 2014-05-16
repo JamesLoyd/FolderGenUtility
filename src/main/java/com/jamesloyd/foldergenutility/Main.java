@@ -41,8 +41,8 @@ public class Main
         startpoint = scanner.nextInt();
         System.out.println("Please input the folderName");
         folderName = scanner.next();
-        FolderGen.FolderGenBuilder folderBuilder = new FolderGen.FolderGenBuilder(location,folderName);
-        FolderGen folderGen = folderBuilder.build();
+        SimpleFolder.FolderGenBuilder folderBuilder = new SimpleFolder.FolderGenBuilder(location,folderName);
+        SimpleFolder folderGen = folderBuilder.build();
         folderGen.generateFolders();
         */
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
