@@ -29,7 +29,6 @@ public class FolderGenFactory
         {
             return new FolderGen.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).build();
         }
-/*
         else if (folderSeperator == '\0' && startpoint != null && numberOfFiles != null)
         {
             return new FolderGen.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).startpoint(startpoint).build();
@@ -43,7 +42,6 @@ public class FolderGenFactory
         {
             return new FolderGen.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
         }
-        */
         else
         {
             return  new FolderGen.FolderGenBuilder(location,folderName).build();
