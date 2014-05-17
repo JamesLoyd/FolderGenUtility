@@ -118,44 +118,9 @@ public class SimpleFolder extends AbstractFolder
             }
         }
 
-        generate(fileList);
+        generate(fileList, startpoint);
     }
 
-    private void generate(ArrayList<File> fileList)
-    {
-        int start = 0;
-        if(startpoint == null)
-        {
-            start = 0;
-        }
-        else
-        {
-            start = Integer.parseInt(startpoint);
-        }
-        for (int i = start; i < fileList.size() ; i++)
-        {
-            File file = null;
-            file = fileList.get(i);
-            try{
-                if(file.mkdir()) {
-                    StringBuffer buffer = new StringBuffer();
-                    buffer.append(file.toString());
-                    buffer.append(" has been created");
-                    JOptionPane.showMessageDialog(null,buffer.toString(),"SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    StringBuffer buffer = new StringBuffer();
-                    buffer.append(file.toString());
-                   buffer.append(" has not been created");
-                   JOptionPane.showMessageDialog(null,buffer.toString(),"ERROR",JOptionPane.OK_OPTION);
-                }
-            } catch(Exception e){
-                StringBuffer buffer = new StringBuffer();
-                e.printStackTrace();
-                buffer.append("Please log an issue");
-                JOptionPane.showMessageDialog(null,buffer.toString(),"ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
 
     public String toString()
     {
