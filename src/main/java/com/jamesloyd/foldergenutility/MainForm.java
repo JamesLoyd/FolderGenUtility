@@ -179,8 +179,7 @@ public class MainForm extends JFrame implements ActionListener , ItemListener
             }
             else
             {
-                System.out.println(placeholder);
-                if(textFieldNumberOfFolders.getText() == "")
+                if(textFieldNumberOfFolders.getText().equals(""))
                 {
                     numberOfFiles = null;
                 }
@@ -188,7 +187,7 @@ public class MainForm extends JFrame implements ActionListener , ItemListener
                 {
                     numberOfFiles = textFieldNumberOfFolders.getText();
                 }
-                SimpleFolder simpleFolderBuilder = SimpleFolderFactory.createFolders(path.toString(), textForFolderName.getText().toString(), startpoint, numberOfFiles, placeholder);
+                SimpleFolder simpleFolderBuilder = SimpleFolderFactory.createFolders(path.toString(), textForFolderName.getText().toString(), null, numberOfFiles, null);
                 simpleFolderBuilder.generateFolders();
             }
 

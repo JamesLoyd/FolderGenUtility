@@ -22,5 +22,5 @@ package com.jamesloyd.foldergenutility;
  */
 abstract class AbstractFolder
 {
-    abstract void generate();
+    abstract void generateFolders();
 }

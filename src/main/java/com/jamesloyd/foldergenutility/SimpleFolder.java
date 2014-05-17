@@ -40,7 +40,7 @@ public class SimpleFolder extends AbstractFolder
         this.location = builder.location;
         this.folderSeperator = builder.folderSeperator;
     }
-
+    @Override
     public void generateFolders()
     {
 
@@ -182,6 +182,10 @@ public class SimpleFolder extends AbstractFolder
         public FolderGenBuilder numberOfFiles(String numberOfFiles)
         {
             this.numberOfFiles = numberOfFiles;
+            if(this.numberOfFiles == "" || this.numberOfFiles == null)
+            {
+                this.numberOfFiles = "1";
+            }
             return this;
         }
 
