@@ -70,7 +70,7 @@ public class SimpleFolder
             }
         }
 
-        else if (numberOfFiles != null && startpoint == null && folderSeperator != '\u0000')
+        else if (numberOfFiles != null && startpoint == null && folderSeperator != null)
         {
             for (int i = 1; i <= Integer.parseInt(numberOfFiles) ; i++)
             {

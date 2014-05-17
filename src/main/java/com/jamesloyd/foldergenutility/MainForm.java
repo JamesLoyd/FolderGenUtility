@@ -45,7 +45,7 @@ public class MainForm extends JFrame implements ActionListener , ItemListener
     private JTextArea textArea;
     private JScrollPane scrollpane;
     private JButton clearButton;
-    char placeholder = '\u0000';
+    String placeholder = null;
     String startpoint = null;
     String numberOfFiles = null;
 
