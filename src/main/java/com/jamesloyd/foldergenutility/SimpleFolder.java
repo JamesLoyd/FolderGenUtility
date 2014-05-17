@@ -24,7 +24,7 @@ import java.util.ArrayList;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-public class SimpleFolder
+public class SimpleFolder extends AbstractFolder
 {
     private String location;
     private String numberOfFiles;
