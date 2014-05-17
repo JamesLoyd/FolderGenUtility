@@ -25,20 +25,20 @@ public class SimpleFolderFactory
     public static SimpleFolder createFolders(String location, String folderName, String startpoint, String numberOfFiles, String folderSeperator)
     {
 
-        if (startpoint == null && folderSeperator == '\u0000' && numberOfFiles != null)
+        if (startpoint == null && folderSeperator == null && numberOfFiles != null)
         {
             return new SimpleFolder.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).build();
         }
-        else if (folderSeperator == '\0' && startpoint != null && numberOfFiles != null)
+        else if (folderSeperator == null && startpoint != null && numberOfFiles != null)
         {
             return new SimpleFolder.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).startpoint(startpoint).build();
         }
 
-        else if(folderSeperator != '\0' && startpoint != null && numberOfFiles !=null)
+        else if(folderSeperator != null && startpoint != null && numberOfFiles !=null)
         {
             return new SimpleFolder.FolderGenBuilder(location,folderName).startpoint(startpoint).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
         }
-        else if (folderSeperator != '\0'&& numberOfFiles != null && startpoint == null)
+        else if (folderSeperator != null&& numberOfFiles != null && startpoint == null)
         {
             return new SimpleFolder.FolderGenBuilder(location,folderName).numberOfFiles(numberOfFiles).folderSeperator(folderSeperator).build();
         }
