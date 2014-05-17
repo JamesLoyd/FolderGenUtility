@@ -22,7 +22,7 @@ package com.jamesloyd.foldergenutility;
  */
 public class SimpleFolderFactory
 {
-    public static SimpleFolder createFolders(String location, String folderName, String startpoint, String numberOfFiles, char folderSeperator)
+    public static SimpleFolder createFolders(String location, String folderName, String startpoint, String numberOfFiles, String folderSeperator)
     {
 
         if (startpoint == null && folderSeperator == '\u0000' && numberOfFiles != null)

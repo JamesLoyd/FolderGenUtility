@@ -30,7 +30,7 @@ public class SimpleFolder
     private String numberOfFiles;
     private String startpoint;
     private String folderName;
-    private char folderSeperator;
+    private String folderSeperator;
 
     private SimpleFolder(FolderGenBuilder builder)
     {
@@ -87,7 +87,7 @@ public class SimpleFolder
 
         }
 
-        else if (numberOfFiles !=null && startpoint !=null && folderSeperator != '\u0000')
+        else if (numberOfFiles !=null && startpoint !=null && folderSeperator != null)
         {
             for (int i = Integer.parseInt(startpoint); i <= Integer.parseInt(numberOfFiles) ; i++)
             {
@@ -171,7 +171,7 @@ public class SimpleFolder
         private String numberOfFiles;
         private String startpoint;
         private String folderName;
-        private char folderSeperator;
+        private String folderSeperator;
 
         public FolderGenBuilder(String location, String folderName)
         {
@@ -190,7 +190,7 @@ public class SimpleFolder
             this.startpoint = startpoint;
             return this;
         }
-        public FolderGenBuilder folderSeperator(char folderSeperator)
+        public FolderGenBuilder folderSeperator(String folderSeperator)
         {
             this.folderSeperator = folderSeperator;
             return this;
