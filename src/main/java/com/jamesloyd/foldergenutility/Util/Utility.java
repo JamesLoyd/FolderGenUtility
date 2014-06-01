@@ -50,4 +50,13 @@ public class Utility
             return "GENERAL ERROR";
         }
     }
+    public static void createFile(String fileName, String containingFolderStatus , String containingFolderName)
+    {
+
+    }
+
+    public static void createFile(String fileName, String containingFolderStatus , String containingFolderName, boolean incrementFileName)
+    {
+
+    }
 }

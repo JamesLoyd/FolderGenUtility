@@ -86,5 +86,6 @@ public class BugHandler
         {
             System.out.println(result);
         }
+        Utility.createFile("BugReport",result,BUG_HANDLER_BUG_FOLDER,true);
     }
 }
