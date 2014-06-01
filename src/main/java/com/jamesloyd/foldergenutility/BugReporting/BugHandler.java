@@ -2,6 +2,7 @@ package com.jamesloyd.foldergenutility.BugReporting;
 
 import com.jamesloyd.foldergenutility.Util.Utility;
 
+import javax.rmi.CORBA.Util;
 import javax.swing.*;
 import javax.swing.text.Utilities;
 import java.io.File;
@@ -43,7 +44,7 @@ public class BugHandler
 
     public void generateReport()
     {
-       try
+        try
        {
            JOptionPane.showMessageDialog(null, "A bug report has been generated at", "Bug Report", JOptionPane.INFORMATION_MESSAGE);
            getSystemInformation();
@@ -52,7 +53,7 @@ public class BugHandler
        }
        catch(Exception ex)
        {
-           JOptionPane.showMessageDialog(null,"A bug report has been generated wit the following information:" + ex.getMessage());
+           JOptionPane.showMessageDialog(null,"A bug report has been generated with the following information:" + ex.getMessage());
        }
     }
 
@@ -86,6 +87,6 @@ public class BugHandler
         {
             System.out.println(result);
         }
-        Utility.createFile("BugReport",result,BUG_HANDLER_BUG_FOLDER,true);
+        Utility.createFile("Bug1.txt",result,BUG_HANDLER_BUG_FOLDER,true);
     }
 }

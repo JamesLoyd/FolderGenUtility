@@ -62,7 +62,8 @@ abstract class AbstractFolder
                 JOptionPane.showMessageDialog(null, buffer.toString(), "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
                 throw new Exception();
             }
-            catch(Exception e){
+            catch(Exception e)
+            {
                 BugHandler bugHandler = new BugHandler(e);
                 bugHandler.generateReport();
             }

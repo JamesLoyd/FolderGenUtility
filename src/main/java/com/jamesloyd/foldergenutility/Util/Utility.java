@@ -2,7 +2,9 @@ package com.jamesloyd.foldergenutility.Util;
 
 import com.jamesloyd.foldergenutility.BugReporting.BugHandler;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 
 /*
  *   Copyright (c) 2014 James Loyd
@@ -45,18 +47,41 @@ public class Utility
         }
         catch (Exception ex)
         {
-            BugHandler bugHandler = new BugHandler(ex);
-            bugHandler.generateReport();
-            return "GENERAL ERROR";
+           BugHandler bugHandler = new BugHandler(ex);
+           bugHandler.generateReport();
+           return "GENERAL ERROR";
         }
     }
     public static void createFile(String fileName, String containingFolderStatus , String containingFolderName)
     {
 
+
     }
 
     public static void createFile(String fileName, String containingFolderStatus , String containingFolderName, boolean incrementFileName)
     {
+        try
+        {
+            File bugFile = new File(".\\Bugs\\Bug1"+".txt" );
+            FileWriter fileWriter = new FileWriter(bugFile);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.append("gsd");
+            fileWriter.flush();
+            fileWriter.close();
+            bufferedWriter.close();
+
+        }
+        catch (Exception e)
+        {
+
+        }
+
+    }
+
+    public static void checkForFile(String fileName)
+    {
+        File file = new File("./Bugs");
+        System.out.println(file.listFiles());
 
     }
 }
