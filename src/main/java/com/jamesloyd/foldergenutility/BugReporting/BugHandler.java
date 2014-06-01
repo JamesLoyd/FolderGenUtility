@@ -1,6 +1,11 @@
 package com.jamesloyd.foldergenutility.BugReporting;
 
+import com.jamesloyd.foldergenutility.Util.Utility;
+
 import javax.swing.*;
+import javax.swing.text.Utilities;
+import java.io.File;
+import java.util.logging.Logger;
 
 /*
  *   Copyright (c) 2014 James Loyd
@@ -30,6 +35,7 @@ public class BugHandler
     private String osName;
     private String version;
     private String vendor;
+    static final String BUG_HANDLER_BUG_FOLDER = "Bugs";
     public BugHandler(Exception exception)
     {
         this.exception = exception;
@@ -64,11 +70,29 @@ public class BugHandler
 
     private void saveBugReportToFile()
     {
+
         StringBuffer buffer = new StringBuffer();
         buffer.append(osName + " ");
         buffer.append(osVersion + " ");
         buffer.append(vendor + " ");
         buffer.append(version + " ");
         System.out.println(buffer);
+        if(Utility.createFolder(BUG_HANDLER_BUG_FOLDER))
+        {
+            System.out.println("Bug folder was created");
+        }
+        else
+        {
+            File file = new File("./" + BUG_HANDLER_BUG_FOLDER );
+            if(file.exists())
+            {
+                System.out.println("Bug Folder already exists");
+            }
+            else
+            {
+                System.out.println("Bug Folder could not be created");
+            }
+        }
+
     }
 }
