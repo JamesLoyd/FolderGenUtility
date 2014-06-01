@@ -76,11 +76,7 @@ public class BugHandler
         buffer.append(vendor + " ");
         buffer.append(version + " ");
         System.out.println(buffer);
-        if(Utility.createFolder(BUG_HANDLER_BUG_FOLDER).equals("EXISTS"))
-        {
-            System.out.println("THE BUG FOLDER EXISTS");
-        }
-        else if(Utility.createFolder(BUG_HANDLER_BUG_FOLDER).equals("CREATED"))
+        if(Utility.createFolder(BUG_HANDLER_BUG_FOLDER).equals("CREATED"))
         {
             System.out.println("THE BUG FOLDER WAS CREATED");
         }
