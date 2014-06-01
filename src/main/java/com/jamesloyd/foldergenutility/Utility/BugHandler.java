@@ -1,4 +1,4 @@
-package com.jamesloyd.foldergenutility;
+package com.jamesloyd.foldergenutility.Utility;
 /*
  *   Copyright (c) 2014 James Loyd
  *
@@ -22,4 +22,10 @@ package com.jamesloyd.foldergenutility;
  */
 public class BugHandler
 {
+    //class level variables
+
+    public BugHandler()
+    {
+
+    }
 }
