@@ -53,7 +53,7 @@ public class BugHandler
        }
        catch(Exception ex)
        {
-           JOptionPane.showMessageDialog(null,"A bug report has been generated with the following information:" + ex.getMessage());
+           JOptionPane.showMessageDialog(null,"A bug report has been generated with the following information:" + ex.getMessage() + ex.getStackTrace());
        }
     }
 
@@ -88,5 +88,6 @@ public class BugHandler
             System.out.println(result);
         }
         Utility.createFile("Bug1.txt",result,BUG_HANDLER_BUG_FOLDER,true);
+        System.out.println(Utility.checkForFile("Bug1.txt"));
     }
 }

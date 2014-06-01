@@ -78,10 +78,23 @@ public class Utility
 
     }
 
-    public static void checkForFile(String fileName)
+    public static boolean checkForFile(String fileName)
     {
-        File file = new File("./Bugs");
-        System.out.println(file.listFiles());
-
+        File file = new File(".\\Bugs");
+        File[] files = file.listFiles();
+        boolean check = false;
+        System.out.println(System.getProperty("user.dir"));
+        for (int i = 0; i < files.length;i++)
+        {
+            if(files[i].isFile())
+            {
+               if(files[i].toString().equals(".\\Bugs\\Bug1.txt"))
+               {
+                   check = true;
+                   break;
+               }
+            }
+        }
+        return check;
     }
 }
