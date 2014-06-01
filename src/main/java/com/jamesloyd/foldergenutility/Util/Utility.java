@@ -27,17 +27,19 @@ import java.io.File;
  */
 public class Utility
 {
-    public static void createFolder(String folderName)
+    public static boolean createFolder(String folderName)
     {
         try
         {
             File file = new File("./" + folderName);
             file.mkdir();
+            return true;
         }
         catch (Exception ex)
         {
             BugHandler bugHandler = new BugHandler(ex);
             bugHandler.generateReport();
+            return false;
         }
     }
 }
