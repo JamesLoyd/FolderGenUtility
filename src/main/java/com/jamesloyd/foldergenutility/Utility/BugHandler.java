@@ -23,9 +23,21 @@ package com.jamesloyd.foldergenutility.Utility;
 public class BugHandler
 {
     //class level variables
-
-    public BugHandler()
+    private String osVersion;
+    private String osName;
+    private String version;
+    private String vendor;
+    private Exception e;
+    public BugHandler(Exception exception)
     {
+        this.e = exception;
+    }
 
+    public void getSystemInformation()
+    {
+        version = Runtime.class.getPackage().getImplementationVersion();
+        vendor = Runtime.class.getPackage().getImplementationVendor();
+        osName = System.getProperty("os.name");
+        osVersion = System.getProperty("os.version");
     }
 }
