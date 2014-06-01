@@ -44,7 +44,8 @@ abstract class AbstractFolder
         {
             File file = null;
             file = fileList.get(i);
-            try{
+            try
+            {
                 if(file.mkdir()) {
                     StringBuffer buffer = new StringBuffer();
                     buffer.append(file.toString());
@@ -56,11 +57,9 @@ abstract class AbstractFolder
                     buffer.append(" has not been created");
                     JOptionPane.showMessageDialog(null,buffer.toString(),"ERROR",JOptionPane.OK_OPTION);
                 }
-            } catch(Exception e){
+            }
+            catch(Exception e){
                 StringBuffer buffer = new StringBuffer();
-                e.printStackTrace();
-                buffer.append("Please log an issue");
-                JOptionPane.showMessageDialog(null,buffer.toString(),"ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
