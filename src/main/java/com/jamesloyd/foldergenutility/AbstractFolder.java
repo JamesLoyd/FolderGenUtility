@@ -46,19 +46,20 @@ abstract class AbstractFolder
         {
             File file = null;
             file = fileList.get(i);
+            StringBuffer buffer = new StringBuffer();
             try
             {
                 if(file.mkdir()) {
-                    StringBuffer buffer = new StringBuffer();
+
                     buffer.append(file.toString());
                     buffer.append(" has been created");
-                    JOptionPane.showMessageDialog(null, buffer.toString(), "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    StringBuffer buffer = new StringBuffer();
-                    buffer.append(file.toString());
-                    buffer.append(" has not been created");
-                    JOptionPane.showMessageDialog(null,buffer.toString(),"ERROR",JOptionPane.OK_OPTION);
+                    StringBuffer buffer2 = new StringBuffer();
+                    buffer2.append(file.toString());
+                    buffer2.append(" has not been created");
+                    JOptionPane.showMessageDialog(null,buffer2.toString(),"ERROR",JOptionPane.OK_OPTION);
                 }
+                JOptionPane.showMessageDialog(null, buffer.toString(), "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
             }
             catch(Exception e){
                 BugHandler bugHandler = new BugHandler(e);
