@@ -37,10 +37,17 @@ public class BugHandler
 
     public void generateReport()
     {
-        JOptionPane.showMessageDialog(null,"A bug report has been generated at", "Bug Report",JOptionPane.INFORMATION_MESSAGE);
-        getSystemInformation();
-        getJavaEnviromentInformation();
-        saveBugReportToFile();
+       try
+       {
+           JOptionPane.showMessageDialog(null, "A bug report has been generated at", "Bug Report", JOptionPane.INFORMATION_MESSAGE);
+           getSystemInformation();
+           getJavaEnviromentInformation();
+           saveBugReportToFile();
+       }
+       catch(Exception ex)
+       {
+           JOptionPane.showMessageDialog(null,"A bug report has been generated wit the following information:" + ex.getMessage());
+       }
     }
 
     private void getSystemInformation()

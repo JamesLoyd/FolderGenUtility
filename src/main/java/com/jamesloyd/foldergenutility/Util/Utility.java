@@ -1,4 +1,9 @@
 package com.jamesloyd.foldergenutility.Util;
+
+import com.jamesloyd.foldergenutility.BugReporting.BugHandler;
+
+import java.io.File;
+
 /*
  *   Copyright (c) 2014 James Loyd
  *
@@ -22,8 +27,17 @@ package com.jamesloyd.foldergenutility.Util;
  */
 public class Utility
 {
-    public static void createFolder()
+    public static void createFolder(String folderName)
     {
-        System.out.println("test");
+        try
+        {
+            File file = new File("./" + folderName);
+            file.mkdir();
+        }
+        catch (Exception ex)
+        {
+            BugHandler bugHandler = new BugHandler(ex);
+            bugHandler.generateReport();
+        }
     }
 }
