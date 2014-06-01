@@ -70,19 +70,21 @@ public class BugHandler
 
     private void saveBugReportToFile()
     {
+        String result;
         StringBuffer buffer = new StringBuffer();
         buffer.append(osName + " ");
         buffer.append(osVersion + " ");
         buffer.append(vendor + " ");
         buffer.append(version + " ");
         System.out.println(buffer);
-        if(Utility.createFolder(BUG_HANDLER_BUG_FOLDER).equals("CREATED"))
+        result = Utility.createFolder(BUG_HANDLER_BUG_FOLDER);
+        if(result.equals("CREATED"))
         {
-            System.out.println("THE BUG FOLDER WAS CREATED");
+            System.out.println(result);
         }
-        else
+        else if(result.equals("GENERAL ERROR"))
         {
-            System.out.println("THE BUG FOLDER COULD NOT BE CREATED");
+            System.out.println(result);
         }
     }
 }
