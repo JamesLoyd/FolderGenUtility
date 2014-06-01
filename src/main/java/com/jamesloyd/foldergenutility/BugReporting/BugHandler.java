@@ -1,4 +1,4 @@
-package com.jamesloyd.foldergenutility.Util;
+package com.jamesloyd.foldergenutility.BugReporting;
 /*
  *   Copyright (c) 2014 James Loyd
  *
@@ -20,5 +20,5 @@ package com.jamesloyd.foldergenutility.Util;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-public class Utility {
+public class BugHandler {
 }
