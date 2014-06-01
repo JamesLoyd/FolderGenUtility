@@ -1,5 +1,7 @@
 package com.jamesloyd.foldergenutility;
 
+import com.jamesloyd.foldergenutility.BugReporting.BugHandler;
+
 import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
@@ -59,7 +61,8 @@ abstract class AbstractFolder
                 }
             }
             catch(Exception e){
-                StringBuffer buffer = new StringBuffer();
+                BugHandler bugHandler = new BugHandler(e);
+                bugHandler.generateReport();
             }
         }
     }

@@ -1,4 +1,7 @@
 package com.jamesloyd.foldergenutility.BugReporting;
+
+import javax.swing.*;
+
 /*
  *   Copyright (c) 2014 James Loyd
  *
@@ -20,5 +23,45 @@ package com.jamesloyd.foldergenutility.BugReporting;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-public class BugHandler {
+public class BugHandler
+{
+    private Exception exception = null;
+    private String osVersion;
+    private String osName;
+    private String version;
+    private String vendor;
+    public BugHandler(Exception exception)
+    {
+        this.exception = exception;
+    }
+
+    public void generateReport()
+    {
+        JOptionPane.showMessageDialog(null,"A bug report has been generated at", "Bug Report",JOptionPane.INFORMATION_MESSAGE);
+        getSystemInformation();
+        getJavaEnviromentInformation();
+        saveBugReportToFile();
+    }
+
+    private void getSystemInformation()
+    {
+        osName = System.getProperty("os.name");
+        osVersion = System.getProperty("os.version");
+    }
+
+    private void getJavaEnviromentInformation()
+    {
+        version = Runtime.class.getPackage().getImplementationVersion();
+        vendor = Runtime.class.getPackage().getImplementationVendor();
+    }
+
+    private void saveBugReportToFile()
+    {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(osName + " ");
+        buffer.append(osVersion + " ");
+        buffer.append(vendor + " ");
+        buffer.append(version + " ");
+        System.out.println(buffer);
+    }
 }
