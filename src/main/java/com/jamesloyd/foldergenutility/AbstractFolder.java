@@ -33,6 +33,8 @@ abstract class AbstractFolder
 
     protected void generate(ArrayList<File> fileList, String startpoint)
     {
+        StringBuffer buffer = new StringBuffer();
+        String result = "";
         int start = 0;
         if(startpoint == null)
         {
@@ -46,7 +48,7 @@ abstract class AbstractFolder
         {
             File file = null;
             file = fileList.get(i);
-            StringBuffer buffer = new StringBuffer();
+
             try
             {
                 if(file.mkdir())
@@ -54,15 +56,17 @@ abstract class AbstractFolder
 
                     buffer.append(file.toString());
                     buffer.append(" has been created");
+                    buffer.append("\n");
+                    result = "WAS CREATED";
                 }
                 else
                 {
-                    StringBuffer buffer2 = new StringBuffer();
-                    buffer2.append(file.toString());
-                    buffer2.append(" has not been created");
-                    JOptionPane.showMessageDialog(null,buffer2.toString(),"ERROR",JOptionPane.OK_OPTION);
+                    buffer.append(file.toString());
+                    buffer.append(" has not been created");
+                    buffer.append("\n");
+                    result = "WAS NOT CREATED";
+
                 }
-                JOptionPane.showMessageDialog(null, buffer.toString(), "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
             }
             catch(Exception e)
             {
@@ -70,5 +74,6 @@ abstract class AbstractFolder
                 bugHandler.generateReport();
             }
         }
+        JOptionPane.showMessageDialog(null, buffer.toString(), result, JOptionPane.INFORMATION_MESSAGE);
     }
 }
