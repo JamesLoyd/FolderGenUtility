@@ -70,6 +70,7 @@ public class BugHandler
     {
         String result;
         String fileName = "Bug1.txt";
+        String folderName = "Bugs";
         StringBuffer buffer = new StringBuffer();
         buffer.append(osName + " ");
         buffer.append(osVersion + " ");
@@ -86,7 +87,7 @@ public class BugHandler
             System.out.println(result);
         }
         Utility.createFile("Bug1.txt",result,BUG_HANDLER_BUG_FOLDER,true);
-        if(Utility.checkForFile(fileName))
+        if(Utility.checkForFile(fileName, folderName ))
         {
             System.out.println("The file exists");
         }
