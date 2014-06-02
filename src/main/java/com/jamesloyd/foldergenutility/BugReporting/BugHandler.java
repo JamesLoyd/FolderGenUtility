@@ -31,7 +31,7 @@ import java.util.logging.Logger;
  */
 public class BugHandler
 {
-    private Exception exception = null;
+    private Exception exception;
     private String osVersion;
     private String osName;
     private String version;
@@ -46,7 +46,7 @@ public class BugHandler
     {
         try
        {
-           JOptionPane.showMessageDialog(null, "A bug report has been generated at", "Bug Report", JOptionPane.INFORMATION_MESSAGE);
+           JOptionPane.showMessageDialog(null, "A bug report has been generated " + exception.getMessage(), "Bug Report", JOptionPane.INFORMATION_MESSAGE);
            getSystemInformation();
            getJavaEnviromentInformation();
            saveBugReportToFile();
