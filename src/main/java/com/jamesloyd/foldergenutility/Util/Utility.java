@@ -83,7 +83,6 @@ public class Utility
         File file = new File(".\\" + folderWhereFileIsLocated);
         File[] files = file.listFiles();
         boolean check = false;
-        System.out.println(System.getProperty("user.dir"));
         for (int i = 0; i < files.length;i++)
         {
             if(files[i].isFile())

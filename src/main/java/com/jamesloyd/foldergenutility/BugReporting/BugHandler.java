@@ -43,7 +43,7 @@ public class BugHandler
     {
         try
        {
-           JOptionPane.showMessageDialog(null, "A bug report has been generated " + exception.getMessage(), "Bug Report", JOptionPane.INFORMATION_MESSAGE);
+           JOptionPane.showMessageDialog(null, "A bug report has been generated " + exception.getMessage(), "Bug Report", JOptionPane.WARNING_MESSAGE);
            getSystemInformation();
            getJavaEnviromentInformation();
            saveBugReportToFile();

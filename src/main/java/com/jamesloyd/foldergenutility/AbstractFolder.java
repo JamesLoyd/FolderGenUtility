@@ -67,6 +67,7 @@ abstract class AbstractFolder
                     result = "WAS NOT CREATED";
 
                 }
+                throw new Exception("Something");
             }
             catch(Exception e)
             {
