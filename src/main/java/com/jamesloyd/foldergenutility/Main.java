@@ -1,5 +1,7 @@
 package com.jamesloyd.foldergenutility;
 
+import com.jamesloyd.foldergenutility.Forms.SimpleFolderForm;
+
 /**
  *   Copyright (c) 2014 James Loyd
  *
@@ -48,7 +50,7 @@ public class Main
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                MainForm form = new MainForm();
+                SimpleFolderForm form = new SimpleFolderForm();
                 form.createShowGUI();
             }
         });

@@ -1,4 +1,7 @@
-package com.jamesloyd.foldergenutility;
+package com.jamesloyd.foldergenutility.Forms;
+
+import com.jamesloyd.foldergenutility.AbstractFolder;
+import com.jamesloyd.foldergenutility.SimpleFolderFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +32,7 @@ import java.io.File;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-public class MainForm extends JFrame implements ActionListener , ItemListener
+public class SimpleFolderForm extends JFrame implements ActionListener , ItemListener
 {
     private JTextField textFieldNumberOfFolders;
     private JCheckBox checkboxForNumber;
@@ -52,7 +55,7 @@ public class MainForm extends JFrame implements ActionListener , ItemListener
     JFrame jFrame = new JFrame("FolderGenUtility");
     String path = "";
     JFileChooser fileChooser = new JFileChooser();
-    public MainForm()
+    public SimpleFolderForm()
     {
         this.toolBar = new JToolBar();
         this.labelFolderLocation = new JLabel();
