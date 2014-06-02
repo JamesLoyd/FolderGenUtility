@@ -88,7 +88,7 @@ public class Utility
         {
             if(files[i].isFile())
             {
-               if(files[i].toString().equals(".\\Bugs\\Bug1.txt"))
+               if(files[i].toString().equals(".\\Bugs\\Bug2.txt"))
                {
                    check = true;
                    break;

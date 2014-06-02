@@ -2,11 +2,8 @@ package com.jamesloyd.foldergenutility.BugReporting;
 
 import com.jamesloyd.foldergenutility.Util.Utility;
 
-import javax.rmi.CORBA.Util;
 import javax.swing.*;
-import javax.swing.text.Utilities;
-import java.io.File;
-import java.util.logging.Logger;
+
 
 /*
  *   Copyright (c) 2014 James Loyd
@@ -89,6 +86,13 @@ public class BugHandler
             System.out.println(result);
         }
         Utility.createFile("Bug1.txt",result,BUG_HANDLER_BUG_FOLDER,true);
-        System.out.println(Utility.checkForFile(fileName));
+        if(Utility.checkForFile(fileName))
+        {
+            System.out.println("The file exists");
+        }
+        else
+        {
+            System.out.println("The file does not exist");
+        }
     }
 }
