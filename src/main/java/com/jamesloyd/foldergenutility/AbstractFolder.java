@@ -27,9 +27,9 @@ import java.util.ArrayList;
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-abstract class AbstractFolder
+public abstract class AbstractFolder
 {
-    abstract void generateFolders();
+    public abstract void generateFolders();
 
     protected void generate(ArrayList<File> fileList, String startpoint)
     {
