@@ -33,7 +33,7 @@ abstract class AbstractFolder
 
     protected void generate(ArrayList<File> fileList, String startpoint)
     {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         String result = "";
         int start = 0;
         if(startpoint == null)
