@@ -49,11 +49,14 @@ abstract class AbstractFolder
             StringBuffer buffer = new StringBuffer();
             try
             {
-                if(file.mkdir()) {
+                if(file.mkdir())
+                {
 
                     buffer.append(file.toString());
                     buffer.append(" has been created");
-                } else {
+                }
+                else
+                {
                     StringBuffer buffer2 = new StringBuffer();
                     buffer2.append(file.toString());
                     buffer2.append(" has not been created");
