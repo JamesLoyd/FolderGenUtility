@@ -60,7 +60,6 @@ abstract class AbstractFolder
                     JOptionPane.showMessageDialog(null,buffer2.toString(),"ERROR",JOptionPane.OK_OPTION);
                 }
                 JOptionPane.showMessageDialog(null, buffer.toString(), "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-                throw new Exception();
             }
             catch(Exception e)
             {
