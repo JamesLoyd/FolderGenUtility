@@ -28,25 +28,6 @@ public class Main
     //this will get refactored soon
     public static void main(String args[]) throws Exception
     {
-       /* int option =0;
-        Scanner scanner = new Scanner(System.in);
-        String location;
-        String folderName;
-        int startpoint;
-        int numberOfFolders;
-        System.out.println("This is a simple program to generate folders in a specified location.");
-        System.out.println("Please input the folder location of the root directory");
-        location = scanner.next();
-        System.out.println("Please input the number of files to be added");
-        numberOfFolders = scanner.nextInt();
-        System.out.println("Please input the starting point.");
-        startpoint = scanner.nextInt();
-        System.out.println("Please input the folderName");
-        folderName = scanner.next();
-        SimpleFolder.FolderGenBuilder folderBuilder = new SimpleFolder.FolderGenBuilder(location,folderName);
-        SimpleFolder folderGen = folderBuilder.build();
-        folderGen.generateFolders();
-        */
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
