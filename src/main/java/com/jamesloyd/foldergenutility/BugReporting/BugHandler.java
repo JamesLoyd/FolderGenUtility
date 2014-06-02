@@ -1,7 +1,5 @@
 package com.jamesloyd.foldergenutility.BugReporting;
-
 import com.jamesloyd.foldergenutility.Util.Utility;
-
 import javax.swing.*;
 
 
