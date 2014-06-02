@@ -72,6 +72,7 @@ public class BugHandler
     private void saveBugReportToFile()
     {
         String result;
+        String fileName = "Bug1.txt";
         StringBuffer buffer = new StringBuffer();
         buffer.append(osName + " ");
         buffer.append(osVersion + " ");
@@ -88,6 +89,6 @@ public class BugHandler
             System.out.println(result);
         }
         Utility.createFile("Bug1.txt",result,BUG_HANDLER_BUG_FOLDER,true);
-        System.out.println(Utility.checkForFile("Bug1.txt"));
+        System.out.println(Utility.checkForFile(fileName));
     }
 }
