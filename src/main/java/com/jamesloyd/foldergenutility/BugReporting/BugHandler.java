@@ -87,13 +87,5 @@ public class BugHandler
             System.out.println(result);
         }
         Utility.createFile("Bug1.txt",result,BUG_HANDLER_BUG_FOLDER,true);
-        if(Utility.checkForFile(fileName, folderName ))
-        {
-            System.out.println("The file exists");
-        }
-        else
-        {
-            System.out.println("The file does not exist");
-        }
     }
 }
